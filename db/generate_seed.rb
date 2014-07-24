@@ -1,7 +1,7 @@
 require 'csv'
 require 'net/http'
 
-class Seed
+class GenerateSeed
 
   def get_logo_urls
     l = []
@@ -35,5 +35,5 @@ class Seed
 
 end
 
-#Seed.new.write_basic_data
-Seed.new.write_logo_data
+#GenerateSeed.new.write_basic_data
+#GenerateSeed.new.write_logo_data
