@@ -1,2 +1,8 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+Signed in as <strong><%= current_user.name %></strong>!
+<%= image_tag(current_user.profile_pic) %>
+<%= link_to "Sign out", signout_path, id: "sign_out" %>
+
+
+<div>
+  
+</div>
