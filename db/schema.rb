@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20140724180326) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    t.string   "profile_pic"
+=======
+>>>>>>> f3745788d23c77c323de152e5e5b19fcde536ca2
+>>>>>>> f214128fde47da27a06195e8fba70088bc43c7e0
   end
 
 end
