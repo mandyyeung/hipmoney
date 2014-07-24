@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20140724192020) do
 
   # These are extensions that must be enabled in order to support this database
@@ -34,7 +35,10 @@ ActiveRecord::Schema.define(version: 20140724192020) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.string   "profile_pic"
+=======
+>>>>>>> f3745788d23c77c323de152e5e5b19fcde536ca2
   end
 
 end
