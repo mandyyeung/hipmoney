@@ -6,21 +6,9 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
 
-<link href="vendor/assets/css/style.css" rel="stylesheet" type="text/css">
-<link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
-<link href="assets/css/custom-icon-set.css" rel="stylesheet" type="text/css">
 
   </head>
   <body>
-    <div>
-      <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= image_tag(current_user.profile_pic) %>
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-    </div>
     <div>
     <%= yield %>
     </div>
