@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem "font-awesome-rails"
 gem 'better_errors', '~> 1.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
