@@ -10,19 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
 
- 
+ *= require theme/bootstrap.min.css
  *= require theme/table-responsive.css
  *= require theme/style.css
  *= require theme/style-responsive.css
  *= require theme/jquery.steps.css
  *= require theme/index.css
- *= require theme/clndr.css
  *= require theme/bucket-ico-fonts.css
  *= require theme/bootstrap-switch.css
  *= require theme/bootstrap-reset.css
  *= require theme/blue-theme.css
  *= require font-awesome
-
  *= require_tree .
  *= require_self
  */
