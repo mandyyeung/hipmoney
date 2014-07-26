@@ -1,68 +1,122 @@
 $(document).on('page:change', function() {
-  var seriesOptions = [],
-    yAxisOptions = [],
-    seriesCounter = 0,
-    names = ['MSFT', 'AAPL', 'GOOG'],
-    colors = Highcharts.getOptions().colors;
-
-  $.each(names, function(i, name) {
-
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename='+ name.toLowerCase() +'-c.json&callback=?', function(data) {
-
-      seriesOptions[i] = {
-        name: name,
-        data: data
-      };
-
-      // As we're loading the data asynchronously, we don't know what order it will arrive. So
-      // we keep a counter and create the chart when all the data is loaded.
-      seriesCounter++;
-
-      if (seriesCounter == names.length) {
-        createChart();
-      }
-    });
+  
+  Highcharts.setOptions({
+    global : {
+      useUTC : false
+    }
   });
+  
+  // Create the chart
+  $('#container').highcharts('StockChart', {
+    chart : {
+      events : {
+        load : function() {
 
+          // set up the updating of the chart each second
+          var series = this.series[0];
 
+          function getCurrentPrice() {
+            $.ajax({
+                url: 'http://finance.google.com/finance/info?client=ig&q=FB', 
+                success: function(data) { 
+                  // uncomment to view all the raw data returned by google API
+                  // console.log(JSON.stringify(data)); 
 
-  // create the chart when all data is loaded
-  function createChart() {
+                  // get the time from the JSON response
+                  var dateString = data[0].lt_dts; // 2014-07-25T16:00:00Z"
+                  var x = new Date(dateString).getTime();
 
-    $('#container').highcharts('StockChart', {
+                  // get the stock price from the JSON response
+                  var y = data[0].l_cur;
 
-        rangeSelector: {
-        inputEnabled: $('#container').width() > 480,
-            selected: 4
-        },
+                  // uncomment this code to replace real data with random data
+                  x = (new Date()).getTime(), // current time
+                  // y = Math.round(Math.random() * 100);
 
-        yAxis: {
-          labels: {
-            formatter: function() {
-              return (this.value > 0 ? '+' : '') + this.value + '%';
-            }
-          },
-          plotLines: [{
-            value: 0,
-            width: 2,
-            color: 'silver'
-          }]
-        },
-        
-        plotOptions: {
-          series: {
-            compare: 'percent'
+                  // console.log('displaying point x = ' + x + ' y = ' + y);
+                  series.addPoint([x, y], true, true);
+                },
+                error: function() { alert('error'); },
+                dataType: 'jsonp'
+            });            
           }
-        },
-        
-        tooltip: {
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
-          valueDecimals: 2
-        },
-        
-        series: seriesOptions
-    });
-  }
 
+          setInterval(getCurrentPrice, 1000);
+        }
+      }
+    },
+    
+    // xAxis: {
+    //   gapGridLineWidth: 0
+    // },
+    
+    rangeSelector : {
+      buttons : [{
+        type : 'minute',
+        count : 1,
+        text : '1m'
+      }, {
+        type : 'hour',
+        count : 1,
+        text : '1h'
+      }, {
+        type : 'day',
+        count : 1,
+        text : '1D'
+      }, {
+        type : 'all',
+        count : 1,
+        text : 'All'
+      }],
+      selected : 1,
+      inputEnabled : false
+    },
+    
+    series : [{
+      name : 'Intraday FB Price',
+      type: 'area',
+
+      data: [ [ new Date().getTime(), 0 ] ],
+
+      // dataGrouping: {
+      //   enabled: false
+      // },
+
+      // data : (function() {
+      //   // generate an array of random data
+      //   var data = [], time = (new Date()).getTime(), i;
+
+      //   for( i = -999; i <= 0; i++) {
+      //     data.push([
+      //       time + i * 1000,
+      //       Math.round(Math.random() * 100)
+      //     ]);
+      //   }
+      //   return data;
+      // })()
+
+      // data : [ [new Date().getTime(), 0] ] 
+      // gapSize: null,
+      // tooltip: {
+      //   valueDecimals: 2
+      // },
+      // fillColor : {
+      //   linearGradient : {
+      //     x1: 0, 
+      //     y1: 0, 
+      //     x2: 0, 
+      //     y2: 1
+      //   },
+      //   stops : [
+      //     [0, Highcharts.getOptions().colors[0]], 
+      //     [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+      //   ]
+      // },
+      // threshold: null
+    }],
+
+    title : {
+      text : 'Intraday Stock Price (FB)'
+    }
+  });
 }); 
-
