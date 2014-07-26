@@ -21,6 +21,18 @@
 //= require jquery.slimscroll.min
 //= require skycons
 //= require jquery.easing.min
+//= require jquery.flot
+//= require jquery.flot.tooltip.min
+//= require jquery.flot.resize.min
+//= require jquery.flot.pie.resize
+//= require jquery.flot.animator.min
+//= require jquery.flot.growraf
+//= require dashboard
+//= require jquery.customSelect.min
+
+
+
+//= require scripts
 
 
 // <script src="assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
@@ -37,3 +49,4 @@
 // <script src="js/dashboard.js"></script>
 // <!--common script init for all pages-->
 // <script src="js/scripts.js"></script>
+
