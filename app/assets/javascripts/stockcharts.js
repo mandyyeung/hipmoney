@@ -7,6 +7,7 @@ $(document).on('page:change', function() {
   });
   
   var ticker = 'FB';
+  var lastTime = null;
 
   // google finance API for retrieving past week of closing prices
   $.get("http://finance.google.com/finance/historical",
@@ -32,6 +33,9 @@ $(document).on('page:change', function() {
         history.unshift([ date.getTime(), price ]);
       }
 
+      // start with lastTime being the latest x coordinate
+      lastTime = history[history.length-1][0];
+
       // Create the chart
       $('#container').highcharts('StockChart', {
         chart : {
@@ -45,7 +49,7 @@ $(document).on('page:change', function() {
                 $.ajax({
                     url: 'http://finance.google.com/finance/info?client=ig&q=FB', 
                     success: function(data) { 
-                      // uncomment to view all the raw data returned by google API
+                      // FOR TESTING: view all the raw data returned by google API
                       // console.log(JSON.stringify(data)); 
 
                       // get the time from the JSON response
@@ -57,14 +61,18 @@ $(document).on('page:change', function() {
                       // get the stock price from the JSON response
                       var y = Number(data[0].l_cur);
 
+                      // FOR TESTING:
                       // instead of using official time, use current local time
                       // x = new Date().getTime();
-
                       // instead of using actual data, use random data
-                      // y = Math.floor(Math.random() * 100);
+                      // y = 70 + Math.floor(Math.random() * 10);
 
-                      // console.log('displaying point x = ' + x + ' y = ' + y);
-                      series.addPoint([x, y], true, false);
+                      // since adding a point pushes the other points over, only add
+                      // if we actually got a new x coordinate (time)
+                      if (x !== lastTime) {
+                        series.addPoint([x, y], true, true);
+                        lastTime = s;
+                      }
                     },
                     error: function() { alert('error'); },
                     dataType: 'jsonp'
@@ -77,9 +85,10 @@ $(document).on('page:change', function() {
         },
         
         xAxis: {
-          ordinal: false
-          // minTickInterval: 1000
-          // gapGridLineWidth: 0
+          // x-axis scale based on "time" instead of "points"
+          // ordinal: false,
+
+          gapGridLineWidth: 0
         },
         
         rangeSelector: {
@@ -110,8 +119,23 @@ $(document).on('page:change', function() {
         
         series : [{
           name : 'Intraday FB Price',
-
           data: history,
+
+          type : 'area',
+          // gapSize: 5,
+          fillColor : {
+            linearGradient : {
+              x1: 0, 
+              y1: 0, 
+              x2: 0, 
+              y2: 1
+            },
+            stops : [
+              [0, Highcharts.getOptions().colors[0]], 
+              [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            ]
+          },
+          threshold: null
 
           // data: (function() {
           //   var data = [ ];
