@@ -24,23 +24,57 @@ $(document).on('page:change', function() {
 
                   // get the time from the JSON response
                   var dateString = data[0].lt_dts; // 2014-07-25T16:00:00Z"
-                  var x = new Date(dateString).getTime();
+                  var date = new Date(dateString);
+                  date.setHours(date.getHours()+4);
+                  var x = date.getTime(); 
+
+                  // instead of using official time, use current local time
+                  // var x = new Date().getTime();
 
                   // get the stock price from the JSON response
-                  var y = data[0].l_cur;
-
-                  // uncomment this code to replace real data with random data
-                  x = (new Date()).getTime(), // current time
-                  // y = Math.round(Math.random() * 100);
+                  var y = Number(data[0].l_cur);
 
                   // console.log('displaying point x = ' + x + ' y = ' + y);
-                  series.addPoint([x, y], true, true);
+                  series.addPoint([x, y], true, false);
                 },
                 error: function() { alert('error'); },
                 dataType: 'jsonp'
             });            
           }
 
+          var toggle = false;
+          function generateRandomData() {
+            // y = Math.round(Math.random() * 100);
+
+            // x = (new Date('2014-07-24T10:00:00Z')).getTime();
+            // y = 100;
+            // series.addPoint([x, y], true, true);
+
+            // x = (new Date('2014-07-25T10:00:00Z')).getTime();
+            // y = 200;
+            // series.addPoint([x, y], true, true);            
+
+            // x = (new Date('2014-07-26T10:02:00Z')).getTime();
+            // y = 100;
+            // series.addPoint([x, y], true, false);
+
+            // x = (new Date('2014-07-26T10:03:00Z')).getTime();
+            // y = 300;
+            // series.addPoint([x, y], true, false);
+
+            // x = (new Date('2014-07-26T10:03:00Z')).getTime();
+            x = (new Date()).getTime();
+            if (toggle) {
+              y = 100;
+            }
+            else {
+              y = 100;
+            }
+            toggle = !toggle;
+            series.addPoint([x, y], true, false);
+          }
+
+          // setInterval(generateRandomData, 1000);
           setInterval(getCurrentPrice, 1000);
         }
       }
@@ -50,33 +84,49 @@ $(document).on('page:change', function() {
     //   gapGridLineWidth: 0
     // },
     
-    rangeSelector : {
-      buttons : [{
-        type : 'minute',
-        count : 1,
-        text : '1m'
-      }, {
-        type : 'hour',
-        count : 1,
-        text : '1h'
-      }, {
-        type : 'day',
-        count : 1,
-        text : '1D'
-      }, {
-        type : 'all',
-        count : 1,
-        text : 'All'
-      }],
-      selected : 1,
-      inputEnabled : false
-    },
+    // rangeSelector : {
+    //   buttons : [{
+    //     type : 'minute',
+    //     count : 1,
+    //     text : '1m'
+    //   }, {
+    //     type : 'hour',
+    //     count : 1,
+    //     text : '1h'
+    //   }, {
+    //     type : 'day',
+    //     count : 1,
+    //     text : '1D'
+    //   }, {
+    //     type : 'all',
+    //     count : 1,
+    //     text : 'All'
+    //   }],
+    //   selected : 1,
+    //   inputEnabled : false
+    // },
     
     series : [{
       name : 'Intraday FB Price',
-      type: 'area',
 
-      data: [ [ new Date().getTime(), 0 ] ],
+      data: [ ],
+
+      // data: (function() {
+      //   var data = [ ];
+
+      //   // x = (new Date('2014-07-26T10:00:00Z')).getTime();
+      //   // y = 100;
+      //   // data.push([x, y]);
+
+      //   // x = (new Date('2014-07-26T10:01:00Z')).getTime();
+      //   // y = 200;
+      //   // data.push([x, y]);
+
+      //   return data;
+      // })()
+
+      // type: 'area',
+      // data: [ [ new Date().getTime(), 0 ] ],
 
       // dataGrouping: {
       //   enabled: false

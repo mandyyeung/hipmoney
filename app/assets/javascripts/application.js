@@ -15,7 +15,7 @@
 //= require turbolinks
 
 
-
+//= require csv
 //= require stockcharts
 //= require_tree .
 
