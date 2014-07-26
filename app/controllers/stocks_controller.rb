@@ -6,6 +6,11 @@ class StocksController < ApplicationController
     end
   end
 
+  def create
+    current_user.stocks << Stock.find(params[:id])
+    redirect_to root_path
+  end
+
   private 
 
   def stock_params

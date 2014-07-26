@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree
+//= require jquery-ui-1.10.1.custom.min
 //= require bootstrap.min
 //= require jquery.dcjqaccordion.2.7
 //= require jquery.scrollTo.min
@@ -28,11 +29,13 @@
 //= require jquery.flot.animator.min
 //= require jquery.flot.growraf
 //= require dashboard
+
 //= require jquery.customSelect.min
 
 
 
 //= require scripts
+//= require draggable-portlet
 
 
 // <script src="assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
@@ -49,4 +52,6 @@
 // <script src="js/dashboard.js"></script>
 // <!--common script init for all pages-->
 // <script src="js/scripts.js"></script>
+
+
 

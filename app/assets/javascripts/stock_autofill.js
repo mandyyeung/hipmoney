@@ -1,5 +1,9 @@
 $(document).on('page:change', function () {
 
+
+  DraggablePortlet.init();
+
+
   $('input').on('keyup', function( e ){
     var input = $(this).val(),
         JSONPath = '/stocks/' + input,
