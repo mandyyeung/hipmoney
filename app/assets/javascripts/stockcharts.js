@@ -6,7 +6,7 @@ $(document).on('page:change', function() {
     }
   });
   
-  var ticker = 'FB';
+  var ticker = 'AAPL';
   var lastTime = null;
 
   // google finance API for retrieving past week of closing prices
@@ -118,7 +118,7 @@ $(document).on('page:change', function() {
         // },
         
         series : [{
-          name : 'Intraday FB Price',
+          name : 'Intraday AAPL Price',
           data: history,
 
           type : 'area',
@@ -192,7 +192,7 @@ $(document).on('page:change', function() {
         }],
 
         title : {
-          text : 'Intraday Stock Price (FB)'
+          text : 'Intraday Stock Price (AAPL)'
         }
       });
     }); 
