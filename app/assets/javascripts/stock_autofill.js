@@ -8,6 +8,17 @@ $(document).on('page:change', function () {
 
   });
 
+  $('.fa-plus').click(function() {
+    $(".fa-minus").toggleClass("rotate");
+    $(".fa-plus").toggleClass("rotate");
+    $('input').animate({
+    left: "+=50",
+    width: "toggle"
+    }, 500, function() {
+    // Animation complete.
+  });
+  });
+
   // $('.result').click(function() {
   //   alert('clicked');
   //   var link = 'stocks/'+$(this).attr("data-id")+'/add'

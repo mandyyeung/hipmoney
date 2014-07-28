@@ -1,43 +1,11 @@
-
-<div class='row'>
-
-<div class="col-md-4">
-                        <!--widget start-->
-  <aside class="profile-nav alt">
-      <section class="panel">
-        
-          <div class="user-heading alt gray-bg">
-              <a href="#">
-                 <div class='stock-logo'>
-                  <img alt="" src=<%= current_user.stocks.last.logo %>>
-                </div>
-              </a>
-              <h1><%= current_user.stocks.last.ticker %></h1>
-              <p><%= current_user.stocks.last.name %></p>
-          </div>
-        <% current_user.stocks.each do |stock| %>
-          <ul class="nav nav-pills nav-stacked">
-              <li>
-                <a href="">
-                  <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %> 
-                  <span class="badge label-success pull-right r-activity">10</span>
-                </a>
-              </li>
-            <% end %>
-          </ul>
-
-      </section>
-  </aside>
-  <!--widget end-->
-
-</div>
-
-
 <div class="col-md-8">
-<div id="stockchart"></div>
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+<section class="panel">
+    <div class="panel-body">
+      <div id="stockchart"></div>
+        <script src="http://code.highcharts.com/stock/highstock.js"></script>
+        <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+    </div>
+</section>
 </div>
-</div>
+
 
