@@ -1,18 +1,16 @@
 <!--right sidebar start-->
 <div class="right-sidebar open-right-bar">
 <div class="right-stat-bar">
-<div id="st_top">
   <ul class="right-side-accordion">
-  <li class="widget-collapsible">
+  <li>
       <a href="#" class="head widget-head yellow-bg active clearfix">
           <span class="pull-left"><b>StockTwits</b> Feed</span>
             <%= image_tag "stocktwits_logo.png" %>
       </a>
     </li>
   </ul>
-</div>
-<div id="st_bottom">
-    <ul class="widget-container">
+<div id="st_scroll">
+    <ul>
         <li>
           <% if current_user.stocks %>
             <% info = current_user.stocktwits_feed[0,9] %>
@@ -38,6 +36,5 @@
   </ul>
 </div>
 </div>
-
 </div>
 <!--right sidebar end-->
