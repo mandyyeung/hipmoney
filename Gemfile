@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'yahoo-finance', require: 'yahoo_finance'
 gem "font-awesome-rails"
 gem 'better_errors', '~> 1.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
