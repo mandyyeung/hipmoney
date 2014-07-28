@@ -1,5 +1,5 @@
 <!--header start-->
-<header class="header fixed-top clearfix">
+<header class="header fixed-top clearfix merge-header">
 <!--logo start-->
   <div class="brand">
       <a href="index.html" class="logo">
@@ -10,6 +10,7 @@
   </div>
       <!--logo end-->
   <div class="top-nav clearfix">
+
       <div class="top-nav clearfix">
       <!--search & user info start-->
 
@@ -28,6 +29,7 @@
               <% else %>
                 <%= link_to '<img src="http://icons.iconarchive.com/icons/danleech/simple/1024/google-icon.png"><span class="username">  Sign in with Google</span>'.html_safe, "/auth/google_oauth2", class: 'dropdown-toggle'%>
             <% end %>
+
           </li>
           <!-- user login dropdown end -->
       </ul>
@@ -36,10 +38,3 @@
   </div>
 </header>
 <!--header end-->
-      <!--search & user info goes here-->
-
-
-
-
-
-

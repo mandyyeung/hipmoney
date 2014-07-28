@@ -8,10 +8,14 @@
     <%= csrf_meta_tags %>
   </head>
 <body>
-  <%= render 'partials/navbar' %> 
-  
-  <%= yield %>
-
+  <section id="container" class="open-right-panel">
+    <%= render 'partials/navbar' %>
+  <section id='main-content'>
+    <section class='wrapper'>
+      <%= yield %>
+    </section>
+  </section>
+</section>
 
 </body>
 </html>

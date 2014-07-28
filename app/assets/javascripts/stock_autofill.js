@@ -1,8 +1,23 @@
 $(document).on('page:change', function () {
 
+  $('div#list').on('click', '.result', function() {
+    var link = 'stocks/'+$(this).attr("data-id")+'/add'
+    $.getJSON(link, function( stock ){ 
+      $('#all').append('<div>' + stock.name +'</div>');
+    });
 
-  DraggablePortlet.init();
+  });
 
+  // $('.result').click(function() {
+  //   alert('clicked');
+  //   var link = 'stocks/'+$(this).attr("data-id")+'/add'
+  //   $.ajax({
+  //     url: link,
+  //     }).done(function() {
+  //       alert('requert made');
+  //     });
+  //   $('#all').append('<div><%= j @stock.name %></div>');
+  // });
 
   $('input').on('keyup', function( e ){
     var input = $(this).val(),
@@ -15,11 +30,14 @@ $(document).on('page:change', function () {
 
     $.getJSON(JSONPath, function( response ){
       response.forEach(function( obj ){
-        var template = '<li> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '</li>';
+        var template = '<div class="result" data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '</div>';
 
         $list.append(template);
       });
     });
 
   });
+
+
+
 });

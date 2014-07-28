@@ -7,8 +7,11 @@ class StocksController < ApplicationController
   end
 
   def create
-    current_user.stocks << Stock.find(params[:id])
-    redirect_to root_path
+    @stock = Stock.find(params[:id])
+    current_user.stocks << @stock
+    respond_to do |format|
+      format.json { render json: @stock }
+    end
   end
 
   private 
