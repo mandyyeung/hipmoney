@@ -7,6 +7,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
+
 <body>
   <section id="container" class="open-right-panel">
   <%= render 'partials/navbar' %>
@@ -14,4 +15,5 @@
   <%= yield %>
   </section>
 </body>
+
 </html>
