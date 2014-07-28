@@ -172,7 +172,7 @@ $(document).on('page:change', function() {
           }
         },
             title: {
-                text: 'AAPL Intraday'
+                text: 'AAPL Intraday Stock Price'
             },
             xAxis: {
                 type: 'datetime',
