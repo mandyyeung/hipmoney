@@ -49,12 +49,15 @@ $(document).on('page:change', function () {
 
     $.getJSON(JSONPath, function( response ){
       response.forEach(function( obj ){
-        
+        var id = obj.id;
+        if($('.nav-stacked').html().indexOf(id) < 0){
           var template = '<div class="result" data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle"></span></div>';
+        } else {
+          var template = '<div class="result" data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle green"></span></div>';
+        }
         $list.append(template);
       });
     });
-
   });
 
 
