@@ -1,5 +1,5 @@
 $(document).on('page:change', function() {
-  
+
   Highcharts.setOptions({
     global : {
       useUTC : false
@@ -79,7 +79,7 @@ $(document).on('page:change', function() {
                     },
                     error: function() { alert('error'); },
                     dataType: 'jsonp'
-                });        
+                });     
               }
 
               setInterval(getCurrentPrice, 1000);
@@ -118,20 +118,7 @@ $(document).on('page:change', function() {
             },
             series: [{
                 name: 'Intraday Stock Price (AAPL)',
-                data: (function() {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-    
-                    for (i = -10; i <= 0; i++) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 100
-                        });
-                    }
-                    return data;
-                })()
+                data: history
             }]
         });
     });
