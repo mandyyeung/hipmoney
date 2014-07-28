@@ -4,12 +4,11 @@
     <header class="panel-heading">&nbsp
       <input>
         <span class="tools pull-right">
-            <a href="javascript:;" class="fa fa-minus fa-plus"></a>
             <a href="javascript:;" class="fa fa-plus"></a>
         </span>
       </header>
       <section class="panel">
-        
+        <div id='results'></div>
           <div class="user-heading alt gray-bg">
               <a href="#">
                  <div class='stock-logo'>
@@ -20,9 +19,9 @@
               <p><%= current_user.stocks[-1].name %></p>
           </div>
         <div class="stock-body">
+        <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-          <ul class="nav nav-pills nav-stacked">
-              <li>
+              <li data-id=<%= stock.id %>>
                 <a href="">
                   <i img src=""
                   ></i> <%= stock.ticker %> | <%= stock.name %> 
