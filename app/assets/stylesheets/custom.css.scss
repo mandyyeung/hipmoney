@@ -25,6 +25,25 @@ header h2{
 background-color: grey!important;
 }
 
-.hide{
-  background-color:red;
+
+#st_scroll {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#st_scroll::-webkit-scrollbar
+{
+  width: 0.8em;
+}
+
+#st_scroll::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#st_scroll::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+
 }
