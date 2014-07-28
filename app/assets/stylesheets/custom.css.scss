@@ -1,5 +1,26 @@
+#dashboard {
+  padding: 7% 5%;
+}
+
 .header .chat-toggler .profile-pic img {
   border-radius: 50%;
   height: 35px;
   width: 35px;
+}
+
+header .top-nav {
+margin-top: 12px;
+margin-right: 12px;
+}
+
+header h2{
+  color: grey;
+  margin-left: 12px;
+}
+.wrapper{
+  margin-top: 100px;
+}
+
+.monthly-stats.pink {
+background-color: grey!important;
 }

@@ -1,0 +1,40 @@
+<!--right sidebar start-->
+<div class="right-sidebar open-right-bar">
+<div class="right-stat-bar">
+<ul class="right-side-accordion">
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head yellow-bg active clearfix">
+        <span class="pull-left"> Stock Twits Feed &nbsp; </span>
+          <%= image_tag "stocktwits_logo.png" %>
+    </a>
+    <ul class="widget-container">
+        <li>
+          <% if current_user.stocks %>
+            <% info = current_user.stocktwits_feed %>
+                <% info.each do |i| %>
+                  <div class="prog-row">
+                      <div class="user-thumb">
+                        <%= image_tag i[:user_pic] %>
+                      </div>
+                      <div class="user-details">
+                        <h4><b><%= i[:user] %> said: </b> <%= i[:body]%></h4>
+                        <p>
+                          <%= i[:time] %>
+                        </p>
+                      </div>
+                  </div>
+                <% end %>
+            <% else %>
+            <p>
+              Looks like you haven't added any stocks to your watchlist!
+            </p>
+            <% end %>
+        </li>
+    </ul>
+</li>
+</ul>
+
+</div>
+
+</div>
+<!--right sidebar end-->

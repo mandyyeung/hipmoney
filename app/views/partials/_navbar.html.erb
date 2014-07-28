@@ -1,37 +1,40 @@
-<!-- BEGIN HEADER -->
-<div class="header navbar navbar-inverse ">
-  <!-- BEGIN TOP NAVIGATION BAR -->
-  <div class="navbar-inner">
-    <!-- END RESPONSIVE MENU TOGGLER -->
-    <div class="header-quick-nav" >
-      <!-- BEGIN CHAT TOGGLER -->
-      <div class="pull-right">
-        <div class="chat-toggler"> <a href="#">
-          <div class="user-details">
-            <% if current_user %>
-            <div class="username">Hello, <span class="bold"><%= current_user.name %></span>! </div>
-          </div>
-          <div class="iconset top-down-arrow"></div>
-          </a>
-          <div class="profile-pic"> <%= image_tag(current_user.profile_pic) %></div>
-        </div>
-        <ul class="nav quick-section ">
-          <li class="quicklinks"> <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
-            <div class="iconset top-settings-dark "></div>
-            </a>
-            <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-              <li><i class="fa fa-power-off"><%= link_to "Sign out", signout_path, id: "sign_out" %></i></li>
-            </ul>
-          </li>
-        </ul>
-        <% else %>
-          <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-        <% end %>
-      </div>
-      <!-- END CHAT TOGGLER -->
-    </div>
-    <!-- END TOP NAVIGATION MENU -->
+<!--header start-->
+<header class="header fixed-top clearfix merge-header">
+<!--logo start-->
+  <div class="brand">
+      <a href="index.html" class="logo">
+         <!--  <img src="images/logo.png" alt=""> -->
+         <h2>HIP<b>MONEY</b></h2>
+         <%= link_to '+', add_path(rand(255)) %>
+      </a>
   </div>
-  <!-- END TOP NAVIGATION BAR -->
-</div>
-<!-- END HEADER -->
+      <!--logo end-->
+  <div class="top-nav clearfix">
+
+      <div class="top-nav clearfix">
+      <!--search & user info start-->
+
+        <ul class="nav pull-right top-menu">
+          <!-- user login dropdown start-->
+          <li class="dropdown">
+            <% if current_user%>
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                  <%= image_tag current_user.profile_pic %>
+                  <span class="username"><%= current_user.name %></span>
+                  <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                  <li><%= link_to '<i class="fa fa-sign-out"></i> Log Out'.html_safe, signout_path %></li>
+              </ul>
+              <% else %>
+                <%= link_to '<img src="http://icons.iconarchive.com/icons/danleech/simple/1024/google-icon.png"><span class="username">  Sign in with Google</span>'.html_safe, "/auth/google_oauth2", class: 'dropdown-toggle'%>
+            <% end %>
+
+          </li>
+          <!-- user login dropdown end -->
+      </ul>
+      <!--search & user info end-->
+  </div>
+  </div>
+</header>
+<!--header end-->
