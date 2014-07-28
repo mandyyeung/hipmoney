@@ -6,6 +6,14 @@ class StocksController < ApplicationController
     end
   end
 
+  def create
+    @stock = Stock.find(params[:id])
+    current_user.stocks << @stock
+    respond_to do |format|
+      format.json { render json: @stock }
+    end
+  end
+
   private 
 
   def stock_params

@@ -3,14 +3,19 @@
   <head>
     <title>HipMoney</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
 <body>
-  <%= render 'partials/navbar' %> 
-  
-  <%= yield %>
-  <%= render 'partials/stockcharts' %> 
+  <section id="container" class="open-right-panel">
+    <%= render 'partials/navbar' %>
+  <section id='main-content'>
+    <section class='wrapper'>
+      <%= yield %>
+    </section>
+  </section>
+</section>
 
 </body>
 </html>

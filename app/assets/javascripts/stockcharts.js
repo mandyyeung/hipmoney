@@ -37,7 +37,7 @@ $(document).on('page:change', function() {
       lastTime = history[history.length-1][0];
 
       // Create the chart
-      $('#container').highcharts('StockChart', {
+      $('#stockchart').highcharts('StockChart', {
         chart : {
           events : {
             load : function() {

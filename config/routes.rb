@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   get 'stocks/:query', to: 'stocks#index'
-
+  get 'stocks/:id/add', to: 'stocks#create', as: 'add'
   root to: "home#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
