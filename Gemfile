@@ -42,4 +42,3 @@ gem "omniauth-google-oauth2"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
