@@ -18,4 +18,7 @@ class Stock < ActiveRecord::Base
         # @likes = msg["likes"]["total"] || nil
       end
   end
+
 end
+
+
