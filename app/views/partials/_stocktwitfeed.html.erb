@@ -1,0 +1,45 @@
+<div class="pstfeed">
+  <% current_user.stocks.each do |stock| %>
+        <div class="row tiles-container">
+            <div class="m-l-10 ">
+              <div class="tiles grey p-t-15 p-b-15 p-l-25 ">
+                <h5 class="text-black semi-bold">THE LATEST
+                <i>from</i>
+                <b>StockTwits</b>
+                || $<%= stock.ticker %>
+                </h5>
+              </div>
+          <% info = stock.stocktwits_feed %>
+            <% info.each do |i| %>
+              <div class="tiles white ">
+                <div class="p-t-20 p-b-15 b-b b-grey">
+                  <div class="post overlap-left-10">
+                    <div class="user-profile-pic-wrapper">
+                      <div class="user-profile-pic-2x white-border">
+        					<img width="45" height="45" src="<%= i[:user_pic]%>" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" alt="">
+        					</div>
+                    </div>
+                    <div class="info-wrapper small-width inline">
+                      <div class="info text-black ">
+                        <p><b><%= i[:user] %> said: </b> <%= i[:body]%></p>
+                        <p class="muted small-text"><%= i[:time] %></p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="inline pull-right">
+                      <div class="tiles text-white p-t-5 p-l-5 p-b-5 p-r-5 inline"> <i class="fa fa-heart-o fa-lg"></i> </div>
+                      <div class="tiles white p-t-5 p-l-5 p-b-5 p-r-5 inline"> <i class="fa fa-comment-o fa-lg"></i> </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <div class="tiles grey p-t-5 p-b-5 ">
+               <p class="text-center"> <a href="javascript:;" class="text-black semi-bold  small-text">Load More</a></p>
+              </div>
+            </div>
+          </div>
+          <Br>
+    <% end %>
+</div>

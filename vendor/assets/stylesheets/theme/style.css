@@ -2850,7 +2850,7 @@ input[type="color"] {
   font-weight: normal;
   vertical-align: top;
   background-color: #ffffff;
-  min-height: 37px;
+  min-height: 20px;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;

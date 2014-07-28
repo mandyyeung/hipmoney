@@ -1,0 +1,33 @@
+<div class="pwatchlist">
+ <div class="row tiles-container tiles white"  >
+   <div class="col-md-5 no-padding col-sm-5">
+              <div class="p-l-15 p-r-15 p-b-10 p-t-10 b-b b-grey">
+                <h3 class="text-error bold inline no-margin">Watchlist</h3>
+                <div class="pull-right">
+                  <%= Time.new.strftime("%m/%d/%Y %H:%M%p")  %>
+                  <a href="javscript:;" class="remove">X</a>
+                </div>
+              </div>
+              <% current_user.stocks.each do |stock| %>
+                <div class="scroller" data-height="410px" data-always-visible="1">
+                  <div class="p-l-15 p-r-15 p-b-10 p-t-10 b-b b-grey">
+                    <div class="pull-left">
+                      <p class="small-text"><%= stock.ticker %></p>
+                    </div>
+                    <div class="pull-right">
+                      <p class="small-text"><%= stock.name %></p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="pull-left">
+                      <h4 class="semi-bold">99.78</h4>
+                    </div>
+                    <div class="pull-right" style="line-height: 27px;"> <span class="label label-important" style="vertical-align: bottom;">-318.2</span>
+                      or <span class="label label-success" style="vertical-align: bottom;">+318.2</span>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              <% end %>
+    </div>
+  </div>
+</div>

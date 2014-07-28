@@ -8,8 +8,12 @@
   </head>
   <body>
     <%= render "partials/navbar" %>
-    <div>
-    <%= yield %>
-    </div>
+    <% if current_user %>
+      <div id="dashboard">
+        <%= render "partials/watchlist" %>
+        <%= render "partials/stocktwitfeed" %>
+      </div>
+    <% end %>
+
   </body>
 </html>

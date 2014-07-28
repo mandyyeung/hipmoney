@@ -1,5 +1,23 @@
+#dashboard {
+  padding: 7% 5%;
+}
+
 .header .chat-toggler .profile-pic img {
   border-radius: 50%;
   height: 35px;
   width: 35px;
+}
+
+.pwatchlist {
+  width: 350px;
+  height: 600px;
+
+}
+
+.pstfeed {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+  height: 350px;
+  width: 600px;
 }
