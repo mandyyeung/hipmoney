@@ -9,22 +9,22 @@
           <div class="user-heading alt gray-bg">
               <a href="#">
                  <div class='stock-logo'>
-                  <img alt="" src=<%= current_user.stocks.last.logo %>>
+                  <img alt="" src="">
                 </div>
               </a>
-              <h1><%= current_user.stocks.last.ticker %></h1>
-              <p><%= current_user.stocks.last.name %></p>
+              <h1></h1>
+              <p></p>
           </div>
-        <% current_user.stocks.each do |stock| %>
+
           <ul class="nav nav-pills nav-stacked">
               <li>
                 <a href="">
                   <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %> 
+                  ></i> 
                   <span class="badge label-success pull-right r-activity">10</span>
                 </a>
               </li>
-            <% end %>
+         
           </ul>
 
       </section>
