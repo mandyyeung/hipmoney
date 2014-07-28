@@ -172,7 +172,7 @@ $(document).on('page:change', function() {
           }
         },
             title: {
-                text: 'Live random data'
+                text: 'AAPL Intraday'
             },
             xAxis: {
                 type: 'datetime',
@@ -202,7 +202,7 @@ $(document).on('page:change', function() {
                 enabled: false
             },
             series: [{
-                name: 'Intraday data (AAPL)',
+                name: 'Intraday Stock Price (AAPL)',
                 data: (function() {
                     // generate an array of random data
                     var data = [],
@@ -212,7 +212,7 @@ $(document).on('page:change', function() {
                     for (i = -19; i <= 0; i++) {
                         data.push({
                             x: time + i * 1000,
-                            y: Math.random()
+                            y: 100
                         });
                     }
                     return data;
