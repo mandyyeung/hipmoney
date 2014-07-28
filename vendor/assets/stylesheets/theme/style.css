@@ -170,11 +170,12 @@ a,a:hover,a:focus {
 
 .leftside-navigation,.right-stat-bar{
     height: 100%;
+    width: 100%;
 }
 
 .right-stat-bar ul {
     list-style-type: none;
-    padding-left: 0;
+    margin-top: 0;
 }
 /*LEFT NAVIGATION ICON*/
 .dcjq-icon {
@@ -811,6 +812,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 .right-side-accordion .yellow-bg {
     background:#f3c022;
     color:#fff;
+    height: 80px;
 }
 .prog-row {
     border-bottom:1px solid #3C3C44;

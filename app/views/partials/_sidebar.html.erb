@@ -9,23 +9,26 @@
     </a>
     <ul class="widget-container">
         <li>
-          <% current_user.stocks.each do |stock| %>
-            <% info = stock.stocktwits_feed %>
-              <% info.each do |i| %>
-                <div class="prog-row">
-                    <div class="user-thumb">
-                      <%= image_tag i[:user_pic] %>
-                    </div>
-                    <div class="user-details">
-                      <h4><b><%= i[:user] %> said: </b> <%= i[:body]%></h4>
-                      <p>
-                        <%= i[:time] %>
-                      </p>
-                    </div>
-                </div>
-              <% end %>
+          <% if current_user.stocks %>
+            <% info = current_user.stocktwits_feed %>
+                <% info.each do |i| %>
+                  <div class="prog-row">
+                      <div class="user-thumb">
+                        <%= image_tag i[:user_pic] %>
+                      </div>
+                      <div class="user-details">
+                        <h4><b><%= i[:user] %> said: </b> <%= i[:body]%></h4>
+                        <p>
+                          <%= i[:time] %>
+                        </p>
+                      </div>
+                  </div>
+                <% end %>
+            <% else %>
+            <p>
+              Looks like you haven't added any stocks to your watchlist!
+            </p>
             <% end %>
-
         </li>
     </ul>
 </li>
