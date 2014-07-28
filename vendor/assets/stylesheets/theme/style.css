@@ -85,7 +85,7 @@ a,a:hover,a:focus {
     color:#b6b6b6;
     font-weight:300;
     font-family:'Open Sans',sans-serif;
-    
+
 }
 .form-signin .checkbox .box{
     margin-left: 7px;
@@ -768,6 +768,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     height:100%;
     z-index:1000;
     right:-240px;
+    overflow: scroll;
     top:0;
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
