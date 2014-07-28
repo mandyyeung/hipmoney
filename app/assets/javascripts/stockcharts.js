@@ -47,7 +47,9 @@ $(document).on('page:change', function() {
 
               // set up the updating of the chart each second
               var series = this.series[0];
-
+              $('.nav-stacked li').click(function(){
+                alert('yo');
+              });
               function getCurrentPrice() {
                 $.ajax({
                     url: 'http://finance.google.com/finance/info?client=ig&q=AAPL', 
