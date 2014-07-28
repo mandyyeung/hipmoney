@@ -1,23 +1,28 @@
 <!--right sidebar start-->
 <div class="right-sidebar open-right-bar">
 <div class="right-stat-bar">
-<ul class="right-side-accordion">
-<li class="widget-collapsible">
-    <a href="#" class="head widget-head yellow-bg active clearfix">
-        <span class="pull-left"> Stock Twits Feed &nbsp; </span>
-          <%= image_tag "stocktwits_logo.png" %>
-    </a>
+<div id="st_top">
+  <ul class="right-side-accordion">
+  <li class="widget-collapsible">
+      <a href="#" class="head widget-head yellow-bg active clearfix">
+          <span class="pull-left"><b>StockTwits</b> Feed</span>
+            <%= image_tag "stocktwits_logo.png" %>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="st_bottom">
     <ul class="widget-container">
         <li>
           <% if current_user.stocks %>
-            <% info = current_user.stocktwits_feed %>
+            <% info = current_user.stocktwits_feed[0,9] %>
                 <% info.each do |i| %>
                   <div class="prog-row">
                       <div class="user-thumb">
                         <%= image_tag i[:user_pic] %>
                       </div>
                       <div class="user-details">
-                        <h4><b><%= i[:user] %> said: </b> <%= i[:body]%></h4>
+                        <h4><b><%= link_to i[:user], "http://www.stocktwits.com/#{i[:user]}", :target => "_blank" %> said: </b> <%= i[:body]%></h4>
                         <p>
                           <%= i[:time] %>
                         </p>
@@ -29,11 +34,9 @@
               Looks like you haven't added any stocks to your watchlist!
             </p>
             <% end %>
-        </li>
-    </ul>
-</li>
-</ul>
-
+      </li>
+  </ul>
+</div>
 </div>
 
 </div>

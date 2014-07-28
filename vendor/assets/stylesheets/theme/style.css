@@ -770,7 +770,6 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     height:100%;
     z-index:1000;
     right:-240px;
-    overflow: scroll;
     top:0;
     -webkit-transition:all .3s ease-in-out;
     -moz-transition:all .3s ease-in-out;
@@ -791,9 +790,11 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
 }
 .right-side-accordion {
     margin-top:6px;
+    font-size: 16px;
+    text-align: center;
 }
 .right-side-accordion .head {
-    padding:20px;
+    padding:30px;
     text-transform:uppercase;
     width:100%;
     display:inline-block;

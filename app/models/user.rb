@@ -23,15 +23,19 @@ class User < ActiveRecord::Base
         resp = Net::HTTP.get_response(URI.parse(source))
         data = resp.body
         result = JSON.parse(data)["messages"]
-        result.each do |msg|
-          info = {}
-          info[:user] = msg["user"]["username"]
-          info[:user_pic] = msg["user"]["avatar_url"]
-          info[:body] = msg["body"]
-          info[:time] = Time.parse(msg["created_at"])
-          # @discuss = msg["conversation"]["replies"]
-          # @likes = msg["likes"]["total"] || nil
-          feed << info
+        if result
+          result.each do |msg|
+            info = {}
+            info[:user] = msg["user"]["username"]
+            info[:user_pic] = msg["user"]["avatar_url"]
+            info[:body] = msg["body"]
+            info[:time] = Time.parse(msg["created_at"])
+            # @discuss = msg["conversation"]["replies"]
+            # @likes = msg["likes"]["total"] || nil
+            feed << info
+          end
+        else
+          feed = [{:user => "API", :user_pic => "http://avatars.stocktwits.net/images/default_avatar_thumb.jpg", :body => "Rate limit exceeded", :time => Time.new}]
         end
       end
       feed.sort_by{|hsh| hsh[:time]}.reverse!
