@@ -98,28 +98,6 @@ background-color: grey!important;
 
 }
 
-
-
-
-video#bgvid { 
-
-position: fixed; right: 0; bottom: 0;
-
-min-width: 100%; min-height: 100%;
-
-width: auto; height: auto; z-index: -100;
-
-background: url(chartvideo.jpg) no-repeat;
-
-background-size: cover; 
-
-}
-
-.login{
-  z-index: 100;
-  max-width: 100px;
-  max-height: 100px;
-
 .profile-nav .user-heading a img {
   width: 100px;
   height: 40px;
