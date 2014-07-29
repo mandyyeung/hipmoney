@@ -1,12 +1,10 @@
-$(document).on('page:change', function() {
-
+function setChart(ticker){
   Highcharts.setOptions({
     global : {
       useUTC : false
     }
   });
   
-  var ticker = 'AAPL';
   var lastTime = null;
 
   // google finance API for retrieving past week of closing prices
@@ -16,8 +14,7 @@ $(document).on('page:change', function() {
           startdate:'Jul 15 2014',
           output:'csv'
     },
-    function(csvData)
-    {
+    function(csvData){
       // parse the CSV into an array
       var parsedData = CSV.parse(csvData);
       // console.log(JSON.stringify(parsedData));
@@ -47,10 +44,9 @@ $(document).on('page:change', function() {
 
               // set up the updating of the chart each second
               var series = this.series[0];
-
               function getCurrentPrice() {
                 $.ajax({
-                    url: 'http://finance.google.com/finance/info?client=ig&q=AAPL',
+                    url: 'http://finance.google.com/finance/info?client=ig&q='+ticker,
                     success: function(data) {
                       // FOR TESTING: view all the raw data returned by google API
                       // console.log(JSON.stringify(data)); 
@@ -87,7 +83,7 @@ $(document).on('page:change', function() {
           }
         },
             title: {
-                text: 'AAPL Intraday Stock Price'
+                text: ticker+' Intraday Stock Price'
             },
             xAxis: {
                 type: 'datetime',
@@ -117,13 +113,13 @@ $(document).on('page:change', function() {
                 enabled: false
             },
             series: [{
-                name: 'Intraday Stock Price (AAPL)',
+                name: 'Intraday Stock Price ( '+ticker+' )',
                 data: history
             }]
         });
     });
-
-
-    }
-  );
-
+}
+$(document).on('page:change', function() {
+var tick = $('.user-heading h1').html();
+setChart(tick);
+});

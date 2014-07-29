@@ -10,7 +10,7 @@
       <section class="panel">
         <div id='results'></div>
           <div class="user-heading alt gray-bg">
-              <a href="#">
+              <a >
                  <div class='stock-logo'>
                   <img alt="" src=<%= current_user.stocks[-1].logo %>>
                 </div>
@@ -21,8 +21,8 @@
         <div class="stock-body">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-              <li data-id=<%= stock.id %>>
-                <a href="">
+              <li data-url=<%= stock.logo || 'https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/441/aiga_cashier-512.png' %> data-id=<%= stock.id %>>
+                <a>
                   <i img src=""
                   ></i> <%= stock.ticker %> | <%= stock.name %>
                   <span class="badge label-success pull-right r-activity">10</span>
