@@ -15,7 +15,7 @@
                   <img alt="" src=<%= current_user.stocks[-1].logo %>>
                 </div>
               </a>
-              <h1><%= current_user.stocks[-1].ticker %></h1>
+              <h2><%= current_user.stocks[-1].ticker %></h2>
               <p><%= current_user.stocks[-1].name %></p>
           </div>
         <div class="stock-body">
@@ -24,7 +24,7 @@
               <li data-id=<%= stock.id %>>
                 <a href="">
                   <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %> 
+                  ></i> <%= stock.ticker %> | <%= stock.name %>
                   <span class="badge label-success pull-right r-activity">10</span>
                 </a>
               </li>
