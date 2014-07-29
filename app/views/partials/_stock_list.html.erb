@@ -22,11 +22,12 @@
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
               <li data-id=<%= stock.id %>>
-                <a href="">
+                <span><a href="">
                   <i img src=""
                   ></i> <%= stock.ticker %> | <%= stock.name %> 
-                  <span class="badge label-success pull-right r-activity">10</span>
-                </a>
+                  <!-- <span class="badge label-success pull-right r-activity">10</span> -->
+                </a></span>
+                <span><%= link_to 'Delete', stocks_path(stock), method: :delete, remote: true %></span>
               </li>
             <% end %>
           </ul>
