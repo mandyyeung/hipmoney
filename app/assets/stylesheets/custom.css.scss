@@ -13,49 +13,11 @@ margin-top: 12px;
 margin-right: 12px;
 }
 
-
-
-.panel-body {
-  padding: 15px;
-  border-bottom:20px solid white;
-  height: 422px;
-  overflow: hidden;
-}
-
-.stock-body {
-  height: 190px;
-  overflow: scroll;
-}
-
-#results{
-  height: 444px;
-  width: 326px;
-  background-color: rgba(255,255,255,.9);
-  display: none;
-  position: absolute;
-  z-index: 10;
-  overflow: scroll;
-}
-
-.result{
-  padding:10px 25px;
-  border-bottom: 1px solid #efefef;
-  cursor: pointer;
-}
-
-.fa-check-circle{
-  color: #efefef;
-}
-.green{
-  color:green;
-}
-.result:hover{
-  background-color: #efefef;
-}
 header h2{
   color: grey;
   margin-left: 12px;
 }
+
 
 
 .tools a {
@@ -104,6 +66,7 @@ color: white;
   border-radius: 0;
 }
 
+
 .wrapper{
   margin-top: 100px;
 }
@@ -134,7 +97,31 @@ background-color: grey!important;
   background: rgba(0, 0, 0, 0.5);
 
 }
+
+
+
+
+video#bgvid {
+
+position: fixed; right: 0; bottom: 0;
+
+min-width: 100%; min-height: 100%;
+
+width: auto; height: auto; z-index: -100;
+
+background: url(chartvideo.jpg) no-repeat;
+
+background-size: cover;
+
+}
+
+.login{
+  z-index: 100;
+  max-width: 100px;
+  max-height: 100px;
+
 .profile-nav .user-heading a img {
   width: 100px;
   height: 40px;
+}
 }

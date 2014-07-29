@@ -1,4 +1,15 @@
 $(document).on('page:change', function () {
+  
+  $('.nav-stacked li').click(function(){
+    var content = $(this).html();
+    var ticker = $(this).html().split(" | ")[0].split('> ')[1];
+    var name = $(this).html().split(" | ")[1].split('< ')[0].split(' <')[0];
+    var img = $(this).attr('data-url');
+    $('.user-heading h1').html(ticker);
+    $('.user-heading p').html(name);
+    $('.stock-logo img').attr("src", img);
+    setChart(ticker);
+  });
 
   $('.fa-plus').click(function() {
     $('#results').animate({
