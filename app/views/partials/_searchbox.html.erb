@@ -1,0 +1,7 @@
+<div id='search_box'>
+	<%= form_for @stock, url: stock_path, remote: true do |f| %>
+		<%= f.text_field :name, :placeholder=>"Add a stock to your watchlist" %>
+		<%= f.submit "+" %>
+	<% end %>
+</div>
+<div id="watchlist"></div>
