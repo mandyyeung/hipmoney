@@ -101,7 +101,7 @@ background-color: grey!important;
 
 
 
-video#bgvid { 
+video#bgvid {
 
 position: fixed; right: 0; bottom: 0;
 
@@ -111,7 +111,7 @@ width: auto; height: auto; z-index: -100;
 
 background: url(chartvideo.jpg) no-repeat;
 
-background-size: cover; 
+background-size: cover;
 
 }
 
@@ -123,4 +123,5 @@ background-size: cover;
 .profile-nav .user-heading a img {
   width: 100px;
   height: 40px;
+}
 }
