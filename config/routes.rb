@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   get 'stock/:id', to: 'stocks#show'
+  get 'bitcoin', to: 'stocks#bitcoin'
   get 'stocks/:query', to: 'stocks#index'
   get 'stocks/:id/add', to: 'stocks#create', as: 'add'
   root to: "home#show"
