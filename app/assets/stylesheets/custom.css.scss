@@ -14,8 +14,40 @@ margin-right: 12px;
 }
 
 
+.profile-nav .user-heading a img {
+  border-radius: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 120px;
+  vertical-align: middle;
+}
 
-.panel-body {
+.user-heading h2{
+  color: grey;
+}
+
+.panel-heading{
+
+}
+.stock-logo{
+  height: 150px;
+  width:150px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0 auto;
+  overflow: hidden;
+  line-height:150px;
+}
+.user-heading{
+  background-color: #efefef;
+}
+.bitcoin{
+  background-color: gold;
+  font-size: 80px;
+}
+
+.stocklist {
   padding: 15px;
   border-bottom:20px solid white;
   height: 422px;
@@ -58,6 +90,7 @@ header h2{
 }
 
 
+
 .tools a {
 margin-left: 10px;
 color: #a7a7a7;
@@ -88,21 +121,25 @@ display: none;
 background-color: rgba(0,0,0,0);
 border-bottom: 1px solid grey;
 padding-bottom: 15px;
-color: white;  
+color: white;
 }
 
 
 .panel-heading{
   background-color: #3e3642;
   border-color: #3e3642;
-  padding: 15px;
+  padding: 10px 15px;
   padding-bottom: 0px;
   height: 50px;
 }
 
-.profile-nav .user-heading{
-  border-radius: 0;
+.panel-heading .title{
+  line-height: 30px;
+  font-size: 20px;
+  height: 30px;
+  overflow: hidden;
 }
+
 
 .wrapper{
   margin-top: 100px;
@@ -134,3 +171,33 @@ background-color: grey!important;
   background: rgba(0, 0, 0, 0.5);
 
 }
+
+
+
+
+
+video#bgvid {
+
+position: fixed; right: 0; bottom: 0;
+
+min-width: 100%; min-height: 100%;
+
+width: auto; height: auto; z-index: -100;
+
+background: url(chartvideo.jpg) no-repeat;
+
+background-size: cover;
+
+}
+
+.login{
+  z-index: 100;
+  max-width: 100px;
+  max-height: 100px;
+
+  .profile-nav .user-heading a img {
+    width: 100px;
+    height: 40px;
+  }
+}
+

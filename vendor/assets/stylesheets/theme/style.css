@@ -34,8 +34,8 @@ a,a:hover,a:focus {
     outline:none;
 }
 ::selection {
-    background:#1FB5AD;
-    color:#fff;
+    color:#a9d86e;
+    font-weight: bold;
 }
 ::-moz-selection {
     background:#1FB5AD;
@@ -1667,8 +1667,6 @@ ul.ft-link li a i {
 }
 .pro-thumb img {
     text-align:center;
-    width:112px;
-    height:112px;
     border-radius:50%;
     -webkit-border-radius:50%;
 }
@@ -2399,8 +2397,6 @@ ul.inbox-pagination li {
     display:inline-block;
 }
 .profile-nav .user-heading a img {
-    width:112px;
-    height:112px;
     border-radius:50%;
     -webkit-border-radius:50%;
 }

@@ -6,6 +6,20 @@ class StocksController < ApplicationController
     end
   end
 
+  def show
+    @stock = Stock.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @stock }
+    end
+  end
+
+  def bitcoin
+    @bitcoin = JSON.load(open("https://www.bitstamp.net/api/ticker/"))
+    respond_to do |format|
+      format.json { render json: @bitcoin }
+    end
+  end
+
   def create
     @stock = Stock.find(params[:id])
     current_user.stocks << @stock
@@ -25,6 +39,6 @@ class StocksController < ApplicationController
   private 
 
   def stock_params
-     params.require(:stock).permit(:query)
+     params.require(:stock).permit(:query, :id)
   end
 end

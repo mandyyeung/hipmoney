@@ -1,6 +1,20 @@
 $(document).on('page:change', function () {
+  
+  $('.nav-stacked li').click(function(){
+    var content = $(this).html();
+    var ticker = $(this).html().split(" | ")[0].split('> ')[1];
+    var name = $(this).html().split(" | ")[1].split('< ')[0].split(' <')[0];
+    var img = $(this).attr('data-url');
+    $('.user-heading h2').html(ticker);
+    $('.user-heading p').html(name);
+    $('.stock-logo img').attr("src", img);
+    fillChart();
+  });
 
   $('.fa-plus').click(function() {
+    $('.title').slideToggle( "slow", function() {
+    // Animation complete.
+  });
     $('#results').animate({
       height: "toggle"
       }, 500, function() {
@@ -21,6 +35,10 @@ $(document).on('page:change', function () {
       $.getJSON(link, function( stock ){ 
         var li = "<li><a href=''><i img='' src=''></i>" + stock.ticker + " | " + stock.name + "<span class='badge label-success pull-right r-activity'>10</span></a></li>"
         $('ul.nav-stacked').prepend(li);
+         $('.user-heading h2').html(stock.ticker);
+         $('.user-heading p').html(stock.name);
+         $('.stock-logo img').attr("src", stock.logo);
+         fillChart();
       });
     };
   });

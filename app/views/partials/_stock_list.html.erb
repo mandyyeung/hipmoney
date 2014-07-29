@@ -1,7 +1,7 @@
 <div class="col-md-4">
                         <!--widget start-->
   <aside class="profile-nav alt">
-    <header class="panel-heading">&nbsp
+    <header class="panel-heading"><span class='title'>My Stock Watchlist</span>
       <input>
         <span class="tools pull-right">
             <a href="javascript:;" class="fa fa-plus"></a>
@@ -10,15 +10,15 @@
       <section class="panel">
         <div id='results'></div>
           <div class="user-heading alt gray-bg">
-              <a href="#">
+              <a >
                  <div class='stock-logo'>
-                  <img alt="" src=<%= current_user.stocks[-1].logo %>>
+                  <img alt="" src=<%= current_user.stocks[-1].logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA'%>>
                 </div>
               </a>
-              <h1><%= current_user.stocks[-1].ticker %></h1>
+              <h2><%= current_user.stocks[-1].ticker %></h2>
               <p><%= current_user.stocks[-1].name %></p>
           </div>
-        <div class="stock-body">
+        <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
               <li data-id=<%= stock.id %>>
@@ -28,6 +28,13 @@
                   <!-- <span class="badge label-success pull-right r-activity">10</span> -->
                 </a></span>
                 <span><%= link_to 'Delete', stocks_path(stock), method: :delete, remote: true %></span>
+
+              <li data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+                <a>
+                  <i img src=""
+                  ></i> <%= stock.ticker %> | <%= stock.name %>
+                  <span class="badge label-success pull-right r-activity">10</span>
+                </a>
               </li>
             <% end %>
           </ul>
