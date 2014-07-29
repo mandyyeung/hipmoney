@@ -21,7 +21,7 @@
         <div class="stock-body">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-              <li data-id=<%= stock.id %>>
+              <li data-url=<%= stock.logo || 'https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/441/aiga_cashier-512.png' %> data-id=<%= stock.id %>>
                 <a>
                   <i img src=""
                   ></i> <%= stock.ticker %> | <%= stock.name %> 
