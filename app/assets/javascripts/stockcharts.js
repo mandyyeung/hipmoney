@@ -217,7 +217,7 @@ function historical(ticker){
                     },
                     error: function() { alert('error'); },
                     dataType: 'jsonp'
-                });     
+                });  
               }
 
               setInterval(getCurrentPrice, 1000);

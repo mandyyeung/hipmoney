@@ -1667,8 +1667,6 @@ ul.ft-link li a i {
 }
 .pro-thumb img {
     text-align:center;
-    width:112px;
-    height:112px;
     border-radius:50%;
     -webkit-border-radius:50%;
 }
@@ -2399,8 +2397,6 @@ ul.inbox-pagination li {
     display:inline-block;
 }
 .profile-nav .user-heading a img {
-    width:112px;
-    height:112px;
     border-radius:50%;
     -webkit-border-radius:50%;
 }
