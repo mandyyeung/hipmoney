@@ -79,7 +79,7 @@ $(document).on('page:change', function() {
                     },
                     error: function() { alert('error'); },
                     dataType: 'jsonp'
-                });     
+                });  
               }
 
               setInterval(getCurrentPrice, 1000);
