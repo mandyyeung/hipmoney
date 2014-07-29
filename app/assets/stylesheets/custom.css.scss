@@ -13,10 +13,97 @@ margin-top: 12px;
 margin-right: 12px;
 }
 
+
+
+.panel-body {
+  padding: 15px;
+  border-bottom:20px solid white;
+  height: 422px;
+  overflow: hidden;
+}
+
+.stock-body {
+  height: 190px;
+  overflow: scroll;
+}
+
+#results{
+  height: 444px;
+  width: 326px;
+  background-color: rgba(255,255,255,.9);
+  display: none;
+  position: absolute;
+  z-index: 10;
+  overflow: scroll;
+}
+
+.result{
+  padding:10px 25px;
+  border-bottom: 1px solid #efefef;
+  cursor: pointer;
+}
+
+.fa-check-circle{
+  color: #efefef;
+}
+.green{
+  color:green;
+}
+.result:hover{
+  background-color: #efefef;
+}
 header h2{
   color: grey;
   margin-left: 12px;
 }
+
+
+.tools a {
+margin-left: 10px;
+color: #a7a7a7;
+font-size: 12px;
+line-height: 30px;
+}
+
+
+.fa-plus{
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.rotate{
+  transform:rotate(45deg);
+  -ms-transform:rotate(45deg); /* IE 9 */
+  -webkit-transform:rotate(45deg); /* Opera, Chrome, and Safari */
+}
+
+input, textarea, select, button {
+outline: none !important;
+border: none;
+height: 20px;
+width: 240px;
+margin:0;
+display: none;
+background-color: rgba(0,0,0,0);
+border-bottom: 1px solid grey;
+padding-bottom: 15px;
+color: white;  
+}
+
+
+.panel-heading{
+  background-color: #3e3642;
+  border-color: #3e3642;
+  padding: 15px;
+  padding-bottom: 0px;
+  height: 50px;
+}
+
+.profile-nav .user-heading{
+  border-radius: 0;
+}
+
 .wrapper{
   margin-top: 100px;
 }
@@ -24,6 +111,7 @@ header h2{
 .monthly-stats.pink {
 background-color: grey!important;
 }
+
 
 #st_scroll {
   height: 100%;
@@ -44,4 +132,5 @@ background-color: grey!important;
 #st_scroll::-webkit-scrollbar-thumb
 {
   background: rgba(0, 0, 0, 0.5);
+
 }

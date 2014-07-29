@@ -1,0 +1,38 @@
+<div class="col-md-4">
+                        <!--widget start-->
+  <aside class="profile-nav alt">
+    <header class="panel-heading">&nbsp
+      <input>
+        <span class="tools pull-right">
+            <a href="javascript:;" class="fa fa-plus"></a>
+        </span>
+      </header>
+      <section class="panel">
+        <div id='results'></div>
+          <div class="user-heading alt gray-bg">
+              <a href="#">
+                 <div class='stock-logo'>
+                  <img alt="" src=<%= current_user.stocks[-1].logo %>>
+                </div>
+              </a>
+              <h1><%= current_user.stocks[-1].ticker %></h1>
+              <p><%= current_user.stocks[-1].name %></p>
+          </div>
+        <div class="stock-body">
+        <ul class="nav nav-pills nav-stacked">
+        <% current_user.stocks.reverse.each do |stock| %>
+              <li data-id=<%= stock.id %>>
+                <a href="">
+                  <i img src=""
+                  ></i> <%= stock.ticker %> | <%= stock.name %> 
+                  <span class="badge label-success pull-right r-activity">10</span>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+  </aside>
+  <!--widget end-->
+
+</div>
