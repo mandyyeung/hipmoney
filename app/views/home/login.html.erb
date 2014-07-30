@@ -4,14 +4,24 @@
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
-<body class = "video">
-    <div class= "signup">
-      <%= link_to '<div class="fa fa-google-plus fa-5x"></div>'.html_safe, "/auth/google_oauth2" %>
-  </div>
+<body>
+  <div class="container">
+
+      <form class="form-signin" style='z-index:50; position: relative;'>
+        <h2 class="form-signin-heading">Sign Up with Google</h2>
+        <div class="login-wrap">
+            <%= link_to '<div class="fa fa-google-plus fa-5x"></div>'.html_safe, "/auth/google_oauth2" %>
+        </div>
+
+      </form>
+
+    </div>
+<div class='video'>
+</div>
 <script>
 
 $(function(){
-  $.okvideo('http://vimeo.com/57228510') // [:url] refers to a YouTube or Vimeo URL
+  $.okvideo({source:'http://vimeo.com/72506853', adproof: 'true'}) // [:url] refers to a YouTube or Vimeo URL
 });
 </script>
 

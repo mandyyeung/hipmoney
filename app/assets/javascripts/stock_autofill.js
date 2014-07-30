@@ -11,20 +11,36 @@ $(document).on('page:change', function () {
   });
 
   $('.fa-plus').click(function() {
-    $('.title').slideToggle( "slow", function() {
-    // Animation complete.
-  });
+    if ( $('.stock.title').css('display')==='inline-block'){
+      $('.stock.title').slideToggle( "slow", function() {
+      // Animation complete.
+        $('input').animate({
+        width: "toggle"
+        }, 500, function() {
+        // Animation complete.
+          $('input').select();
+        });
+      });
+    }else{
+      $('input').animate({
+        width: "toggle"
+        }, 500, function() {
+        // Animation complete.
+
+       
+        $('.stock.title').slideToggle( "slow", function() {
+        // Animation complete.
+          
+        });
+      });
+    };
     $('#results').animate({
       height: "toggle"
       }, 500, function() {
       // Animation complete.
     });
     $(".fa-plus").toggleClass("rotate");
-    $('input').animate({
-    width: "toggle"
-    }, 500, function() {
-    // Animation complete.
-  });
+    
 
   $('div#results').on('click', '.result', function() {
     var id = $(this).attr("data-id");

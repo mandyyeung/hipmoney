@@ -64,12 +64,14 @@ margin-right: 12px;
 
 .stock-body {
   height: 190px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #results{
-  height: 498px;
-  width: 267px;
+
+  height: 444px;
+  width: 290px;
+
   background-color: rgba(255,255,255,.9);
   display: none;
   position: absolute;
@@ -123,7 +125,7 @@ input, textarea, select, button {
 outline: none !important;
 border: none;
 height: 20px;
-width: 240px;
+width: 220px;
 margin:0;
 display: none;
 background-color: rgba(0,0,0,0);
@@ -146,11 +148,12 @@ color: white;
   font-size: 20px;
   height: 30px;
   overflow: hidden;
+  display: inline-block;
 }
 
 
 .wrapper{
-  margin-top: 100px;
+  margin-top: 2%;
 }
 
 .monthly-stats.pink {
@@ -188,19 +191,36 @@ background-color: grey!important;
 }
 
 .signup{
-  background-color: rgba(255, 255, 255, 0.3);
-  text-align: center;
-  margin: auto;
-  max-width: 75px;  
-  border-radius: 25px;
+
+  font-size: 24px;
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  padding: 50px;
+  width: 230px;
+  color: red;
+  margin: 0 auto;
+  top: 30%;
+  left:30%;
 }
 
 .signup fa fa-google-plus fa-5x{
-  color: white;
 }
 
 .video{
-background-color: black;
+background: -moz-linear-gradient(-45deg,  rgba(244,205,78,0.75) 0%, rgba(241,116,50,0.71) 50%, rgba(234,85,7,0.71) 51%, rgba(247,96,93,0.66) 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(244,205,78,0.75)), color-stop(50%,rgba(241,116,50,0.71)), color-stop(51%,rgba(234,85,7,0.71)), color-stop(100%,rgba(247,96,93,0.66)));
+background: -webkit-linear-gradient(-45deg,  rgba(244,205,78,0.75) 0%,rgba(241,116,50,0.71) 50%,rgba(234,85,7,0.71) 51%,rgba(247,96,93,0.66) 100%);
+background: -o-linear-gradient(-45deg,  rgba(244,205,78,0.75) 0%,rgba(241,116,50,0.71) 50%,rgba(234,85,7,0.71) 51%,rgba(247,96,93,0.66) 100%);
+background: -ms-linear-gradient(-45deg,  rgba(244,205,78,0.75) 0%,rgba(241,116,50,0.71) 50%,rgba(234,85,7,0.71) 51%,rgba(247,96,93,0.66) 100%);
+background: linear-gradient(135deg,  rgba(244,205,78,0.75) 0%,rgba(241,116,50,0.71) 50%,rgba(234,85,7,0.71) 51%,rgba(247,96,93,0.66) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bff4cd4e', endColorstr='#a8f7605d',GradientType=1 );
+
+position: fixed;
+top:0;
+left:0;
+bottom:0;
+width:100%;
 }
 
 
@@ -214,5 +234,3 @@ background-color: black;
     width: 100px;
     height: 40px;
   }
-
-
