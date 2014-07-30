@@ -203,6 +203,7 @@
                 enabled: false
             },
             series: [{
+                turboThreshold: 2000,
                 name: 'Intraday Stock Price for' + ticker,
                 data: (function() {
                     // generate an array of random data
@@ -300,7 +301,7 @@ function historical(ticker){
                       // since adding a point pushes the other points over, only add
                       // if we actually got a new x coordinate (time)
                       if (x !== lastTime) {
-                        series.addPoint([x, y], true, true);
+                        series.addPoint([x, y], false, false);
                         // lastTime = s;
                       }
                     },
