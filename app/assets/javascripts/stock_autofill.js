@@ -84,9 +84,9 @@ $(document).on('page:change', function () {
         var logo = obj.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA';
         var id = obj.id;
         if($('.nav-stacked').html().indexOf(id) < 0){
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
         } else {
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle green"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
         }
         $list.append(template);
       });
