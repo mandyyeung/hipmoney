@@ -28,6 +28,14 @@ class StocksController < ApplicationController
     end
   end
 
+  def destroy
+  	@stock = Stock.find(params[:id])
+  	current_user.stocks.delete(@stock)
+  	respond_to do |format|
+  		format.js
+  	end
+  end
+
   private 
 
   def stock_params

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
+  delete 'stocks/:id', to: 'stocks#destroy', as: 'stocks'
   get 'stock/:id', to: 'stocks#show'
   get 'bitcoin', to: 'stocks#bitcoin'
   get 'stocks/:query', to: 'stocks#index'
