@@ -242,7 +242,7 @@ function historical(ticker){
   $.get("http://finance.google.com/finance/historical",
     {
           q: ticker,
-          startdate:'Jul 15 2014',
+          startdate:'Jul 1 2014',
           output:'csv'
     },
     function(csvData){
@@ -253,7 +253,7 @@ function historical(ticker){
       // transform the array into coordinates to chart
       var history = [ ];
       parsedData.shift(); // remove the title row
-      for (var i=0; i<7; i++) {
+      for (var i=0; i<20; i++) {
         var row = parsedData[i];
         var date = new Date(row[0]);
         date.setHours(16);
@@ -315,7 +315,7 @@ function historical(ticker){
           }
         },
             title: {
-                text: ticker+' Intraday Stock Price'
+                text: ticker+' Historical Stock Price'
             },
             xAxis: {
                 type: 'datetime',
