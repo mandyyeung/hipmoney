@@ -64,7 +64,7 @@ margin-right: 12px;
 
 .stock-body {
   height: 190px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #results{
@@ -150,7 +150,7 @@ color: white;
 
 
 .wrapper{
-  margin-top: 100px;
+  margin-top: 2%;
 }
 
 .monthly-stats.pink {
@@ -191,7 +191,7 @@ background-color: grey!important;
   background-color: rgba(255, 255, 255, 0.3);
   text-align: center;
   margin: auto;
-  max-width: 75px;  
+  max-width: 75px;
   border-radius: 25px;
 }
 
@@ -214,5 +214,3 @@ background-color: black;
     width: 100px;
     height: 40px;
   }
-
-
