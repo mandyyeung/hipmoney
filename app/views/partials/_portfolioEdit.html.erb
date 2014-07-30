@@ -1,0 +1,35 @@
+<div class="col-md-5">
+    <div class="profile-nav alt">
+        <section class="panel">
+            <div class="panel-heading">
+              <span class="title">MY PORTFOLIO</span>
+              <div class="pull-right"><%= link_to '<i class="fa fa-edit"></i>'.html_safe, '#' %></div>
+            </div>
+                <section class="panel">
+                    <div class="panel-body">
+                        <section id="flip-scroll">
+                            <table class="table table-bordered table-striped table-condensed cf">
+                                <thead class="cf">
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Buy Date</th>
+                                    <th>Buy Price</th>
+                                    <th>Shares</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% current_user.portfolio_show.each do |stock| %>
+                                  <tr>
+                                      <td><%= Stock.find(stock.stock_id).ticker %></td>
+                                      <td><%= stock.purchase_date %></td>
+                                      <td class="numeric"><%= stock.purchase_price %></td>
+                                      <td class="numeric"><%= stock.shares %></td>
+                                  </tr>
+                                <% end %>
+                              </tbody>
+                            </table>
+                        </section>
+                </div>
+        </section>
+    </div>
+</div>

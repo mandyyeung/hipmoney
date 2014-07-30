@@ -1,7 +1,6 @@
 $(document).on('page:change', function () {
   
   $('.nav-stacked').on('click', 'li', function(e){
-
     var ticker = $(this).attr('data-ticker');
     var name = $(this).attr('data-name');
     var img = $(this).attr('data-url');
@@ -119,8 +118,12 @@ $(document).on('page:change', function () {
       return; 
 
     $.getJSON(JSONPath, function( response ){
-      response.forEach(function( obj ){
-        var logo = obj.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA';
+      response.forEach(function( obj ){ 
+        if(obj.logo === null){
+          var logo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08tgzF1SmLGFuIperm7c1h9ZasKCkZ5Mmeljhitb8uzpfiymnug';
+        }else{
+          var logo = obj.logo;
+        };
         var id = obj.id;
         if($('.nav-stacked').html().indexOf(id) < 0){
           var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';

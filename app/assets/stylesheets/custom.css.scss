@@ -17,6 +17,10 @@ margin-right: 12px;
   color: red;
 }
 
+.profile-nav ul>li {
+  padding: 15px;
+}
+
 .nav-stacked li:hover {
   background: #efefef;
 }
@@ -53,7 +57,7 @@ margin-right: 12px;
 }
 
 .stocklist {
-  padding: 15px;
+  padding: 0;
   border-bottom:20px solid white;
   height: 422px;
   overflow: hidden;
@@ -66,12 +70,10 @@ margin-right: 12px;
 
 #results{
 
-  height: 444px;
-  width: 290px;
+  max-height: 150px;
 
   background-color: rgba(255,255,255,.9);
   display: none;
-  position: absolute;
   z-index: 10;
   overflow: scroll;
 }
@@ -91,6 +93,7 @@ margin-right: 12px;
 .result:hover{
   background-color: #efefef;
 }
+
 header h2{
   color: grey;
   margin-left: 12px;
@@ -183,8 +186,6 @@ background-color: grey!important;
 }
 
 .profile-nav .user-heading a img {
-  width: 100px;
-  height: 40px;
 }
 
 .signup{
@@ -228,6 +229,4 @@ width:100%;
   max-height: 100px;
 }
   .profile-nav .user-heading a img {
-    width: 100px;
-    height: 40px;
   }

@@ -36,12 +36,7 @@ class StocksController < ApplicationController
   	end
   end
 
-  def add_price
-  	@stock = Stock.find(params[:id])
-  	@price = current_user.get_price[@stock.id].ask
-  end
-
-  private 
+  private
 
   def stock_params
      params.require(:stock).permit(:query, :id)
