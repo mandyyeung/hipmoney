@@ -36,7 +36,7 @@ class StocksController < ApplicationController
   	end
   end
 
-  private 
+  private
 
   def stock_params
      params.require(:stock).permit(:query, :id)

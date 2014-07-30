@@ -12,4 +12,5 @@ class UserStocksController < ApplicationController
   	end
   end
 
+
 end

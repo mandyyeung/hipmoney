@@ -13,11 +13,11 @@
     <ul>
         <li>
           <% if current_user.stocks %>
-            <% info = current_user.stocktwits_feed[0,9] %>
+            <% info = current_user.stocktwits_feed %>
                 <% info.each do |i| %>
                   <div class="prog-row">
                       <div class="user-thumb">
-                        <%= image_tag i[:user_pic] %>
+                        <%= image_tag i[:avatar] %>
                       </div>
                       <div class="user-details">
                         <h4><b><%= link_to i[:user], "http://www.stocktwits.com/#{i[:user]}", :target => "_blank" %> said: </b> <%= i[:body]%></h4>
