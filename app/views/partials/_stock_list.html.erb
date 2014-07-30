@@ -21,7 +21,7 @@
         <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-          <li data-name=<%= stock.name %>, data-ticker=<%= stock.ticker %>, data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+          <li data-name=<%= stock.name %> data-ticker=<%= stock.ticker %> data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
             <span><a>
               <%= stock.ticker %>
             </a></span>
