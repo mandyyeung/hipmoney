@@ -40,6 +40,7 @@
         $('#stockchart').highcharts({
             chart: {
                 type: 'spline',
+                turboThreshold: 2000,
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
@@ -144,6 +145,7 @@ function historical(ticker){
   Highcharts.setOptions({
     global : {
       useUTC : false
+
     }
   });
   
@@ -179,6 +181,7 @@ function historical(ticker){
         $('#stockchart').highcharts({
             chart: {
                 type: 'spline',
+                turboThreshold: 2000,
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
@@ -267,10 +270,12 @@ function fillChart(){
   var date = new Date();
   if(date.getHours() > 9 && date.getHours() < 16 ){
     var tick = $('.user-heading h2').html();
-    realTime(tick);
+    realTime(tick)
+    $('text').last().html("");
   }else{
     historical(tick);
   };
+  setTimeout(function() { $('text').last().html(""); }, 400);
 };
 $(document).on('page:change', function() {
   fillChart();
