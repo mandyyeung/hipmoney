@@ -2,9 +2,11 @@ $(document).on('page:change', function () {
   
   $('.nav-stacked').on('click', 'li', function(){
     var ticker = $(this).attr('data-ticker');
+    var regex = /[A-Z]+/;
+    var tickerWithoutComma = regex.exec(ticker); 
     var name = $(this).attr('data-name');
     var img = $(this).attr('data-url');
-    $('.user-heading h2').html(ticker);
+    $('.user-heading h2').html(tickerWithoutComma);
     $('.user-heading p').html(name);
     $('.stock-logo img').attr("src", img);
     fillChart();
@@ -35,7 +37,7 @@ $(document).on('page:change', function () {
     if($('.nav-stacked').html().indexOf(id) < 0){
       $(this).find('.fa-check-circle').addClass('green');
       $.getJSON(link, function( stock ){ 
-        var li = "<li data-name='" + name + "', data-ticker='" + ticker + "', data-url='" + logo + "' data-id='" + id + "'><span><a>" + ticker + "</a></span><span class='badge label-success pull-right r-activity'>10</span>&nbsp;<span><a class='fa fa-minus-circle red' data-method='delete' data-remote='true', href='stocks/" + id + "'></a></span></li>"
+        var li = "<li data-name='" + name + "' data-ticker='" + ticker + "' data-url='" + logo + "' data-id='" + id + "'><span><a>" + ticker + "</a></span><span class='badge label-success pull-right r-activity'>10</span>&nbsp;<span><a class='fa fa-minus-circle red' data-method='delete' data-remote='true', href='stocks/" + id + "'></a></span></li>"
         $('ul.nav-stacked').prepend(li);
          $('.user-heading h2').html(stock.ticker);
          $('.user-heading p').html(stock.name);
@@ -84,9 +86,9 @@ $(document).on('page:change', function () {
         var logo = obj.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA';
         var id = obj.id;
         if($('.nav-stacked').html().indexOf(id) < 0){
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
         } else {
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle green"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
         }
         $list.append(template);
       });

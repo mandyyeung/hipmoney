@@ -68,8 +68,8 @@ margin-right: 12px;
 }
 
 #results{
-  height: 444px;
-  width: 326px;
+  height: 498px;
+  width: 267px;
   background-color: rgba(255,255,255,.9);
   display: none;
   position: absolute;
@@ -178,34 +178,41 @@ background-color: grey!important;
 {
   background: rgba(0, 0, 0, 0.5);
 
+
+
+}
+
+.profile-nav .user-heading a img {
+  width: 100px;
+  height: 40px;
+}
+
+.signup{
+  background-color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  margin: auto;
+  max-width: 75px;  
+  border-radius: 25px;
+}
+
+.signup fa fa-google-plus fa-5x{
+  color: white;
+}
+
+.video{
+background-color: black;
 }
 
 
-
-
-
-video#bgvid {
-
-position: fixed; right: 0; bottom: 0;
-
-min-width: 100%; min-height: 100%;
-
-width: auto; height: auto; z-index: -100;
-
-background: url(chartvideo.jpg) no-repeat;
-
-background-size: cover;
-
-}
 
 .login{
   z-index: 100;
   max-width: 100px;
   max-height: 100px;
-
+}
   .profile-nav .user-heading a img {
     width: 100px;
     height: 40px;
   }
-}
+
 

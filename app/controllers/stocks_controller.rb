@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.where('name LIKE ? OR ticker LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+    @stocks = Stock.where('UPPER(name) LIKE UPPER(?) OR UPPER(ticker) LIKE UPPER(?)', "%#{params[:query]}%", "%#{params[:query]}%")
     respond_to do |format|
       format.json { render json: @stocks }
     end
