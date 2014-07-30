@@ -188,49 +188,31 @@ background-color: grey!important;
 }
 
 .signup{
-  /*background-color: rgba(255, 255, 255, 0.3);*/
-  background-color: red;
-  top: 0;
-  bottom: 0;
-  left :0;
-  right: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-align: center;
   margin: auto;
-  position: absolute;
-  display: block;
-  height : 50%;
-  width: 50%;
+  max-width: 75px;  
+  border-radius: 25px;
 }
 
-body video{
+.signup fa fa-google-plus fa-5x{
+  color: white;
+}
+
+.video{
 background-color: black;
 }
 
 
 
-
-video#bgvid {
-
-position: fixed; right: 0; bottom: 0;
-
-min-width: 100%; min-height: 100%;
-
-width: auto; height: auto; z-index: -100;
-
-background: url(chartvideo.jpg) no-repeat;
-
-background-size: cover;
-
-}
-
 .login{
   z-index: 100;
   max-width: 100px;
   max-height: 100px;
-
+}
   .profile-nav .user-heading a img {
     width: 100px;
     height: 40px;
   }
-}
 
 

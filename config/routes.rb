@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'home/show'
-
   get 'auth/:provider/callback', to: 'sessions#create', as: 'signin'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
