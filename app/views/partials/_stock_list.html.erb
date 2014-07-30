@@ -20,12 +20,11 @@
           </div>
         <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
-        <% current_user.stocks.reverse.each do |stock| %>
-          <li data-name=<%= stock.name %> data-ticker=<%= stock.ticker %> data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+
         <% quotes = current_user.get_price %>
         <% rs = current_user.stocks.reverse %>
         <% rs.each_index do |i| %>
-          <li data-name=<%= rs[i].name %>, data-ticker=<%= rs[i].ticker %>, data-url=<%= rs[i].logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= rs[i].id %>>
+          <li data-name=<%= rs[i].name %> data-ticker=<%= rs[i].ticker %> data-url=<%= rs[i].logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= rs[i].id %>>
             <span><a>
               <%= rs[i].ticker %>
             </a></span>
