@@ -17,14 +17,9 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
             <% if current_user%>
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                  <%= image_tag current_user.profile_pic %>
-                  <span class="username"><%= current_user.name %></span>
-                  <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu extended logout">
-                  <li><%= link_to '<i class="fa fa-sign-out"></i> Log Out'.html_safe, signout_path %></li>
-              </ul>
+              <%= image_tag current_user.profile_pic %>
+              <span class="username"><b> <%= current_user.name %> </b></span>
+              <span><%= link_to '<i class="fa fa-sign-out"></i>'.html_safe, signout_path %></span>
               <% else %>
                 <%= link_to '<img src="http://icons.iconarchive.com/icons/danleech/simple/1024/google-icon.png"><span class="username">  Sign in with Google</span>'.html_safe, "/auth/google_oauth2", class: 'dropdown-toggle'%>
             <% end %>

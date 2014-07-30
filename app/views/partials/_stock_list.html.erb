@@ -1,7 +1,7 @@
 <div class="col-md-4">
                         <!--widget start-->
   <aside class="profile-nav alt">
-    <header class="panel-heading"><span class='title'>My Stock Watchlist</span>
+    <header class="panel-heading"><span class='stock title'>My Stock Watchlist</span>
       <input>
         <span class="tools pull-right">
             <a href="javascript:;" class="fa fa-plus"></a>
@@ -20,13 +20,15 @@
           </div>
         <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
-        <% current_user.stocks.reverse.each do |stock| %>
-          <li data-name=<%= stock.name %>, data-ticker=<%= stock.ticker %>, data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+        <% quotes = current_user.get_price %>
+        <% rs = current_user.stocks.reverse %>
+        <% rs.each_index do |i| %>
+          <li data-name=<%= rs[i].name %>, data-ticker=<%= rs[i].ticker %>, data-url=<%= rs[i].logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= rs[i].id %>>
             <span><a>
-              <%= stock.ticker %>
+              <%= rs[i].ticker %>
             </a></span>
-            <span class="badge label-success pull-right r-activity">10</span>&nbsp;
-            <span><%= link_to "", stocks_path(stock), method: :delete, remote: true, class: "fa fa-minus-circle red" %></span>
+            <span class="badge label-success pull-right r-activity">$<%= quotes[i].ask %></span>&nbsp;
+            <span><%= link_to "", stocks_path(rs[i]), method: :delete, remote: true, class: "fa fa-minus-circle red" %></span>
           </li>
             <% end %>
           </ul>
