@@ -125,6 +125,7 @@
         $('#stockchart').highcharts({
             chart: {
                 type: 'spline',
+
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
                 events: {
@@ -159,7 +160,6 @@
                       // if we actually got a new x coordinate (time)
                       if (x !== lastTime) {
                         series.addPoint([x, y], true, true);
-                        lastTime = s;
                       }
                     },
                     error: function() { alert('error'); },
@@ -195,6 +195,7 @@
                         Highcharts.numberFormat(this.y, 2);
                 }
             },
+
             legend: {
                 enabled: false
             },
@@ -212,7 +213,7 @@
                     for (i = -10; i <= 0; i++) {
                         data.push({
                             x: time + i * 1000,
-                            y: 100
+                            y: 50
                         });
                     }
                     return data;
@@ -343,7 +344,8 @@ function historical(ticker){
             series: [{
                 name: 'History Stock Price ( '+ticker+' )',
                 data: history
-            }]
+            }],
+
         });
     });
 }
