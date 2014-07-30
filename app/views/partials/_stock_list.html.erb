@@ -21,21 +21,13 @@
         <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-              <li data-id=<%= stock.id %>>
-                <span><a href="">
-                  <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %> 
-                  <!-- <span class="badge label-success pull-right r-activity">10</span> -->
-                </a></span>
-                <span><%= link_to 'Delete', stocks_path(stock), method: :delete, remote: true %></span>
-
-              <li data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
-                <a>
-                  <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %>
-                  <span class="badge label-success pull-right r-activity">10</span>
-                </a>
-              </li>
+          <li data-name=<%= stock.name %>, data-ticker=<%= stock.ticker %>, data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+            <span><a>
+              <%= stock.ticker %>
+            </a></span>
+            <span class="badge label-success pull-right r-activity">10</span>&nbsp;
+            <span><%= link_to "", stocks_path(stock), method: :delete, remote: true, class: "fa fa-minus-circle red" %></span>
+          </li>
             <% end %>
           </ul>
         </div>
