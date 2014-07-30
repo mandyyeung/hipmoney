@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
     def get_price
       quotes = YahooFinance.quotes(self.stocks.pluck(:ticker).reverse, [:ask])
     end
-
+    
     def portfolio_show
       @stocks = UserStock.where(user_id: current_user.id)
     end
