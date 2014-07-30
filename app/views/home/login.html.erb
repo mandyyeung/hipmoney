@@ -5,9 +5,11 @@
   <title>Document</title>
 </head>
 <body class = "video">
-<script>
-  <div class= "signup">
+    <div class= "signup">
+      <%= link_to '<div class="fa fa-google-plus fa-5x"></div>'.html_safe, "/auth/google_oauth2" %>
   </div>
+<script>
+
 $(function(){
   $.okvideo('http://vimeo.com/57228510') // [:url] refers to a YouTube or Vimeo URL
 });
