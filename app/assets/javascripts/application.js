@@ -27,8 +27,7 @@
 //= require jquery.flot.resize.min
 //= require jquery.flot.pie.resize
 //= require jquery.flot.animator.min
-//= require jquery.flot.growraf
-//= require dashboard
+
 
 //= require jquery.customSelect.min
 //= require csv
@@ -37,6 +36,7 @@
 
 //= require scripts
 //= require draggable-portlet
+
 
 
 

@@ -13,12 +13,27 @@ class StocksController < ApplicationController
     end
   end
 
+  def bitcoin
+    @bitcoin = JSON.load(open("https://www.bitstamp.net/api/ticker/"))
+    respond_to do |format|
+      format.json { render json: @bitcoin }
+    end
+  end
+
   def create
     @stock = Stock.find(params[:id])
     current_user.stocks << @stock
     respond_to do |format|
       format.json { render json: @stock }
     end
+  end
+
+  def destroy
+  	@stock = Stock.find(params[:id])
+  	current_user.stocks.delete(@stock)
+  	respond_to do |format|
+  		format.js
+  	end
   end
 
   private 

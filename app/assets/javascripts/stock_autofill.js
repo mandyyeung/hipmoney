@@ -1,17 +1,19 @@
 $(document).on('page:change', function () {
   
-  $('.nav-stacked li').click(function(){
-    var content = $(this).html();
-    var ticker = $(this).html().split(" | ")[0].split('> ')[1];
-    var name = $(this).html().split(" | ")[1].split('< ')[0].split(' <')[0];
+  $('.nav-stacked').on('click', 'li', function(){
+    var ticker = $(this).attr('data-ticker');
+    var name = $(this).attr('data-name');
     var img = $(this).attr('data-url');
-    $('.user-heading h1').html(ticker);
+    $('.user-heading h2').html(ticker);
     $('.user-heading p').html(name);
     $('.stock-logo img').attr("src", img);
-    setChart(ticker);
+    fillChart();
   });
 
   $('.fa-plus').click(function() {
+    $('.title').slideToggle( "slow", function() {
+    // Animation complete.
+  });
     $('#results').animate({
       height: "toggle"
       }, 500, function() {
@@ -25,18 +27,37 @@ $(document).on('page:change', function () {
   });
 
   $('div#results').on('click', '.result', function() {
-    var id = 'data-id="' + $(this).attr("data-id") + '"'
+    var id = $(this).attr("data-id");
+    var name = $(this).attr("data-name");
+    var ticker = $(this).attr("data-ticker");
+    var logo = $(this).attr("data-url"); 
     var link = 'stocks/'+ $(this).attr("data-id") + '/add'
     if($('.nav-stacked').html().indexOf(id) < 0){
       $(this).find('.fa-check-circle').addClass('green');
       $.getJSON(link, function( stock ){ 
-        var li = "<li><a href=''><i img='' src=''></i>" + stock.ticker + " | " + stock.name + "<span class='badge label-success pull-right r-activity'>10</span></a></li>"
+        var li = "<li data-name='" + name + "', data-ticker='" + ticker + "', data-url='" + logo + "' data-id='" + id + "'><span><a>" + ticker + "</a></span><span class='badge label-success pull-right r-activity'>10</span>&nbsp;<span><a class='fa fa-minus-circle red' data-method='delete' data-remote='true', href='stocks/" + id + "'></a></span></li>"
         $('ul.nav-stacked').prepend(li);
+         $('.user-heading h2').html(stock.ticker);
+         $('.user-heading p').html(stock.name);
+         $('.stock-logo img').attr("src", stock.logo);
+         fillChart();
       });
     };
   });
 
   });
+
+  // $('.fa-minus-circle.red').click(function(){
+  //    // debugger
+  //   $.ajax ({
+  //     type: 'DELETE',
+  //     url: "/stocks/" + $(this).parent().parent().attr('data-id'),
+  //     dataType: 'json',
+  //     success: function(data) {
+  //       $('li[data-id="' + data.id + '"').remove(); 
+  //     }
+  //   });
+  // });
 
   // $('.result').click(function() {
   //   alert('clicked');
@@ -60,11 +81,12 @@ $(document).on('page:change', function () {
 
     $.getJSON(JSONPath, function( response ){
       response.forEach(function( obj ){
+        var logo = obj.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA';
         var id = obj.id;
         if($('.nav-stacked').html().indexOf(id) < 0){
-          var template = '<div class="result" data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle"></span></div>';
         } else {
-          var template = '<div class="result" data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle green"></span></div>';
+          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '", data-id="'+ obj.id +'"> Name: ' + obj.name + ' Ticker: ' + obj.ticker + '<span class="pull-right fa fa-check-circle green"></span></div>';
         }
         $list.append(template);
       });

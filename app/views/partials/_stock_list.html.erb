@@ -1,7 +1,7 @@
 <div class="col-md-4">
                         <!--widget start-->
   <aside class="profile-nav alt">
-    <header class="panel-heading">&nbsp
+    <header class="panel-heading"><span class='title'>My Stock Watchlist</span>
       <input>
         <span class="tools pull-right">
             <a href="javascript:;" class="fa fa-plus"></a>
@@ -12,22 +12,22 @@
           <div class="user-heading alt gray-bg">
               <a >
                  <div class='stock-logo'>
-                  <img alt="" src=<%= current_user.stocks[-1].logo %>>
+                  <img alt="" src=<%= current_user.stocks[-1].logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA'%>>
                 </div>
               </a>
               <h2><%= current_user.stocks[-1].ticker %></h2>
               <p><%= current_user.stocks[-1].name %></p>
           </div>
-        <div class="stock-body">
+        <div class="stock-body stocklist">
         <ul class="nav nav-pills nav-stacked">
         <% current_user.stocks.reverse.each do |stock| %>
-              <li data-url=<%= stock.logo || 'https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/441/aiga_cashier-512.png' %> data-id=<%= stock.id %>>
-                <a>
-                  <i img src=""
-                  ></i> <%= stock.ticker %> | <%= stock.name %>
-                  <span class="badge label-success pull-right r-activity">10</span>
-                </a>
-              </li>
+          <li data-name=<%= stock.name %>, data-ticker=<%= stock.ticker %>, data-url=<%= stock.logo || 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREagc_JNfLZ2y2iNotwwik1uduhiCB9HRD0QPVECZK0uqtutIAUA' %> data-id=<%= stock.id %>>
+            <span><a>
+              <%= stock.ticker %>
+            </a></span>
+            <span class="badge label-success pull-right r-activity">10</span>&nbsp;
+            <span><%= link_to "", stocks_path(stock), method: :delete, remote: true, class: "fa fa-minus-circle red" %></span>
+          </li>
             <% end %>
           </ul>
         </div>

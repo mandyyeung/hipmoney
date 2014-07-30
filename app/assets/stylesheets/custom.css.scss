@@ -13,6 +13,85 @@ margin-top: 12px;
 margin-right: 12px;
 }
 
+.red {
+  color: red;
+}
+
+.nav-stacked li:hover {
+  background: #efefef;
+}
+
+
+.profile-nav .user-heading a img {
+  border-radius: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 120px;
+  vertical-align: middle;
+}
+
+.user-heading h2{
+  color: grey;
+}
+
+.panel-heading{
+
+}
+.stock-logo{
+  height: 150px;
+  width:150px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0 auto;
+  overflow: hidden;
+  line-height:150px;
+}
+.user-heading{
+  background-color: #efefef;
+}
+.bitcoin{
+  background-color: gold;
+  font-size: 80px;
+}
+
+.stocklist {
+  padding: 15px;
+  border-bottom:20px solid white;
+  height: 422px;
+  overflow: hidden;
+}
+
+.stock-body {
+  height: 190px;
+  overflow: scroll;
+}
+
+#results{
+  height: 444px;
+  width: 326px;
+  background-color: rgba(255,255,255,.9);
+  display: none;
+  position: absolute;
+  z-index: 10;
+  overflow: scroll;
+}
+
+.result{
+  padding:10px 25px;
+  border-bottom: 1px solid #efefef;
+  cursor: pointer;
+}
+
+.fa-check-circle{
+  color: #efefef;
+}
+.green{
+  color:green;
+}
+.result:hover{
+  background-color: #efefef;
+}
 header h2{
   color: grey;
   margin-left: 12px;
@@ -57,13 +136,16 @@ color: white;
 .panel-heading{
   background-color: #3e3642;
   border-color: #3e3642;
-  padding: 15px;
+  padding: 10px 15px;
   padding-bottom: 0px;
   height: 50px;
 }
 
-.profile-nav .user-heading{
-  border-radius: 0;
+.panel-heading .title{
+  line-height: 30px;
+  font-size: 20px;
+  height: 30px;
+  overflow: hidden;
 }
 
 
@@ -101,6 +183,7 @@ background-color: grey!important;
 
 
 
+
 video#bgvid {
 
 position: fixed; right: 0; bottom: 0;
@@ -120,8 +203,9 @@ background-size: cover;
   max-width: 100px;
   max-height: 100px;
 
-.profile-nav .user-heading a img {
-  width: 100px;
-  height: 40px;
+  .profile-nav .user-heading a img {
+    width: 100px;
+    height: 40px;
+  }
 }
-}
+
