@@ -1,6 +1,7 @@
 $(document).on('page:change', function () {
   
-  $('.nav-stacked').on('click', 'li', function(){
+  $('.nav-stacked').on('click', 'li', function(e){
+
     var ticker = $(this).attr('data-ticker');
     var regex = /[A-Z]+/;
     var tickerWithoutComma = regex.exec(ticker); 
