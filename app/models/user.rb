@@ -61,5 +61,8 @@ class User < ActiveRecord::Base
       feed.shuffle
   end
 
+    def get_price
+      quotes = YahooFinance.quotes(self.stocks.pluck(:ticker).reverse, [:ask])
+    end
 
 end
