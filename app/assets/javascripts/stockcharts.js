@@ -119,20 +119,7 @@
             },
             series: [{
                 name: 'Intraday Stock Price'+ticker,
-                data: (function() {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-    
-                    for (i = -10; i <= 0; i++) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 100
-                        });
-                    }
-                    return data;
-                })()
+                data: history
             }]
         });
     });
