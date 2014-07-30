@@ -52,13 +52,35 @@ $(document).on('page:change', function () {
     if($('.nav-stacked').html().indexOf(id) < 0){
       $(this).find('.fa-check-circle').addClass('green');
       $.getJSON(link, function( stock ){ 
-        var li = '<li data-name="' + name + '" data-ticker="' + ticker + '" data-url=' + logo + ' data-id="' + id + '"><span><a>' + ticker + '</a></span><span class="badge label-success pull-right r-activity">10</span>&nbsp;<span><a class="fa fa-minus-circle red" data-method="delete" data-remote="true", href="stocks/' + id + '"></a></span></li>'
+        var li = '<li data-name="' + name + '" data-ticker="' + ticker + '" data-url=' + logo + ' data-id="' + id + '"><span><a>' + ticker + '</a></span><span class="badge label-success pull-right r-activity"></span>&nbsp;<span><a class="fa fa-minus-circle red" data-method="delete" data-remote="true", href="stocks/' + id + '"></a></span></li>'
         $('ul.nav-stacked').prepend(li);
          $('.user-heading h2').html(stock.ticker);
          $('.user-heading p').html(stock.name);
          $('.stock-logo img').attr("src", stock.logo);
          fillChart();
       });
+      $.ajax({
+        url: 'http://finance.google.com/finance/info?client=ig&q='+ ticker,
+        dataType: 'jsonp',
+        success: function(data) { 
+          var currentPrice = "$" + Number(data[0].l_cur);
+          $('li[data-ticker="' + data[0].t + '"] span.badge.label-success').html(currentPrice);
+        }
+      });
+      
+      // $.ajax({
+      //   // type: 'Put',
+      //   // url: "/apartments/" + $(this).attr('id'),
+      //   // data: {"authenticity_token" : $("meta").last().attr("content"),
+      //   // "apartment" : {"status" : $("option:selected", this).text()}
+      // },
+      //   dataType: 'json',
+      //   success: function(data) {
+      //   $("#" + data.id + ".status_success").fadeIn(500);
+      //   $("#" + data.id + ".status_success").html("Status updated!");
+      //   $("#" + data.id + ".status_success").fadeOut(2000);
+      // }
+      // });
     };
   });
 
