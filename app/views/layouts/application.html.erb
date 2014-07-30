@@ -11,8 +11,9 @@
 
 <body>
   <section id="container" class="open-right-panel">
-
+  <%if current_user%>
     <%= render 'partials/navbar' %>
+  <%end%>
   <section id='main-content'>
     <section class='wrapper'>
       <%= yield %>
