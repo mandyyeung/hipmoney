@@ -356,7 +356,10 @@ function historical(ticker){
 function fillChart(){ 
   var tick = $('.user-heading h2').html();
   var date = new Date();
-  if(date.getHours() > 9 && date.getHours() < 18 ){
+  var stringTime = date.getHours().toString() + '.' + date.getMinutes().toString();
+  var time = parseFloat(stringTime)
+  var day = date.getDay()
+  if(time > 9.3 && time < 16 && day != 6 && day != 7 ){
     var tick = $('.user-heading h2').html();
     realTime(tick)
     $('text').last().html("");
