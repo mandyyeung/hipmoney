@@ -55,7 +55,7 @@ $(document).on('page:change', function () {
         $('ul.nav-stacked').prepend(li);
          $('.user-heading h2').html(stock.ticker);
          $('.user-heading p').html(stock.name);
-         $('.stock-logo img').attr("src", stock.logo);
+         $('.stock-logo img').attr("src", logo);
          fillChart();
       });
       $.ajax({
