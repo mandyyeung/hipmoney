@@ -2,6 +2,13 @@
   padding: 7% 5%;
 }
 
+.stat-btn{
+  background-color: white;
+  padding:4px 10px;
+}
+.stat-btn.active{
+  background-color: #efefef;
+}
 .header .chat-toggler .profile-pic img {
   border-radius: 50%;
   height: 35px;
@@ -125,7 +132,7 @@ input, textarea, select, button {
 outline: none !important;
 border: none;
 height: 20px;
-width: 220px;
+width: 90%;
 margin:0;
 display: none;
 background-color: rgba(0,0,0,0);

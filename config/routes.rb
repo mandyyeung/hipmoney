@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'stocks/:id', to: 'stocks#destroy', as: 'stocks'
   get 'stock/:id', to: 'stocks#show'
   get 'bitcoin', to: 'stocks#bitcoin'
+  get 'historical/:id', to: 'stocks#history'
   get 'stocks/:query', to: 'stocks#index'
   get 'stocks/:id/add', to: 'stocks#create', as: 'add'
   get 'users/stocktwits', to: 'users#refreshst'

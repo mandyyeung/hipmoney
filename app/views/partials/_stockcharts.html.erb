@@ -1,7 +1,11 @@
 <div class="col-md-8">
 <section class="panel">
    <header class="panel-heading">
-                <span class="title">STOCK PRICE CHART</span> <!--<span class="tools pull-right">
+    <span class="title">STOCK PRICE CHART</span>
+    <div class="btn-group pull-right stat-tab">
+                <a href="#line-chart" class="btn stat-btn" data-toggle="tab"><i class="fa fa-clock-o"></i></a>
+                <a href="#bar-chart" class="btn stat-btn active" data-toggle="tab"><i class="fa fa-bar-chart-o"></i></a>
+            </div> <!--<span class="tools pull-right">
             <a href="javascript:;" class="fa fa-chevron-down"></a>
             <a href="javascript:;" class="fa fa-cog"></a>
             <a href="javascript:;" class="fa fa-times"></a>
@@ -9,8 +13,8 @@
     </header>
     <div class="panel-body">
       <div id="stockchart"></div>
-        <script src="http://code.highcharts.com/stock/highstock.js"></script>
-        <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
     </div>
 </section>
 </div>
+        <script src="http://code.highcharts.com/stock/highstock.js"></script>
+        <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
