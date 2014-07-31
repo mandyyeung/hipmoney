@@ -47,7 +47,7 @@ $(document).on('page:change', function () {
     var name = $(this).attr("data-name");
     var ticker = $(this).attr("data-ticker");
     var logo = $(this).attr("data-url"); 
-    var link = 'stocks/'+ $(this).attr("data-id") + '/add'
+    var link = 'stocks/' + $(this).attr("data-id") + '/add'
     if($('.nav-stacked').html().indexOf(id) < 0){
       $(this).find('.fa-check-circle').addClass('green');
       $.getJSON(link, function( stock ){ 
@@ -66,20 +66,6 @@ $(document).on('page:change', function () {
           $('li[data-ticker="' + data[0].t + '"] span.badge.label-success').html(currentPrice);
         }
       });
-      
-      // $.ajax({
-      //   // type: 'Put',
-      //   // url: "/apartments/" + $(this).attr('id'),
-      //   // data: {"authenticity_token" : $("meta").last().attr("content"),
-      //   // "apartment" : {"status" : $("option:selected", this).text()}
-      // },
-      //   dataType: 'json',
-      //   success: function(data) {
-      //   $("#" + data.id + ".status_success").fadeIn(500);
-      //   $("#" + data.id + ".status_success").html("Status updated!");
-      //   $("#" + data.id + ".status_success").fadeOut(2000);
-      // }
-      // });
     };
   });
 
