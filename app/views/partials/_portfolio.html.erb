@@ -21,14 +21,22 @@
                                 <tbody>
                                 <% current_user.portfolio_show.each do |stock| %>
                                   <tr>
-                                      <td><%= Stock.find(stock.stock_id).ticker %></td>
+                                      <td><%= t = Stock.find(stock.stock_id).ticker %></td>
                                       <td><%= stock.purchase_date %></td>
-                                      <td class="numeric"><%= stock.purchase_price %></td>
+                                      <td class="numeric">$<%= stock.purchase_price %></td>
                                       <td class="numeric"><%= stock.shares %></td>
-                                      <td class="numeric">+$7,000</td>
+                                      <td class="numeric"><%= number_to_currency(stock.shares * ((YahooFinance.quotes([t], [:ask])[0].ask.to_f) - stock.purchase_price)) %></td>
                                   </tr>
                                 <% end %>
+                                  <tr class="sum">
+                                    <td><b>TOTAL</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="sum"><%= number_to_currency(194735) %></td>
+                                  </tr>
                               </tbody>
+
                             </table>
                         </section>
                 </div>

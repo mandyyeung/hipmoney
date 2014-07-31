@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'yahoo-finance', require: 'yahoo_finance'
 gem "font-awesome-rails"
 gem 'better_errors', '~> 1.1.0'
+gem 'binding_of_caller', '~> 0.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'stocks/:query', to: 'stocks#index'
   get 'stocks/:id/add', to: 'stocks#create', as: 'add'
   get 'users/stocktwits', to: 'users#refreshst'
-  get 'users/portfolio', to:'users#edit_portfolio', as: 'edit_portfolio'
+  get 'users/portfolio', to:'users#show_portfolio', as: 'show_portfolio'
+  get 'users/edit_portfolio', to:'users#edit_portfolio', as: 'edit_portfolio'
   root to: "home#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
