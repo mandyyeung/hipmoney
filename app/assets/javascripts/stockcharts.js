@@ -1,227 +1,102 @@
- function realTime(ticker){
-  
-  Highcharts.setOptions({
-    global : {
-      useUTC : false
-    }
-  });
-  
+function realTime(ticker){
 
-  var lastTime = null;
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
 
-  // google finance API for retrieving past week of closing prices
-  $.get("http://finance.google.com/finance/historical",
-    { 
-          q: ticker,
-          startdate:'Jul 15 2014',
-          output:'csv'
-    },
-    function(csvData)
-    {
-      // parse the CSV into an array
-      var parsedData = CSV.parse(csvData);
-      // console.log(JSON.stringify(parsedData));
+    // Create the chart
+    $('#stockchart').highcharts({
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg,
+            events: {
+                load: function () {
 
-      // transform the array into coordinates to chart
-      var history = [ ];
-      parsedData.shift(); // remove the title row
-      for (var i=0; i<7; i++) {
-        var row = parsedData[i];
-        var date = new Date(row[0]);
-        date.setHours(16);
-        var price = row[4];
-        history.unshift([ date.getTime(), price ]);
-      }
 
-      // start with lastTime being the latest x coordinate
-      lastTime = history[history.length-1][0];
 
-      // Create the chart
-    //   $('#stockchart').highcharts('StockChart', {
-    //     chart : {
-    //       events : {
-    //         load : function() {
+                    var series = this.series[0];
 
-    //           // set up the updating of the chart each second
-    //           var series = this.series[0];
-
-    //           function getCurrentPrice() {
-    //             $.ajax({
-    //                 url: 'http://finance.google.com/finance/info?client=ig&q=FB', 
-    //                 success: function(data) { 
-    //                   // FOR TESTING: view all the raw data returned by google API
-    //                   // console.log(JSON.stringify(data)); 
-
-    //                   // get the time from the JSON response
-    //                   var dateString = data[0].lt_dts; // 2014-07-25T16:00:00Z"
-    //                   var date = new Date(dateString);
-    //                   date.setHours(date.getHours()+4);
-    //                   var x = date.getTime(); 
-
-    //                   // get the stock price from the JSON response
-    //                   var y = Number(data[0].l_cur);
-
-    //                   // FOR TESTING:
-    //                   // instead of using official time, use current local time
-    //                   // x = new Date().getTime();
-    //                   // instead of using actual data, use random data
-    //                   // y = 70 + Math.floor(Math.random() * 10);
-
-    //                   // since adding a point pushes the other points over, only add
-    //                   // if we actually got a new x coordinate (time)
-    //                   if (x !== lastTime) {
-    //                     series.addPoint([x, y], true, true);
-    //                     lastTime = s;
-    //                   }
-    //                 },
-    //                 error: function() { alert('error'); },
-    //                 dataType: 'jsonp'
-    //             });            
-    //           }
-
-    //           setInterval(getCurrentPrice, 1000);
-    //         }
-    //       }
-    //     },
-        
-    //     xAxis: {
-    //       // x-axis scale based on "time" instead of "points"
-    //       // ordinal: false,
-
-    //       gapGridLineWidth: 0
-    //     },
-        
-    //     rangeSelector: {
-    //       enabled: false
-    //     },
-        
-    //     series : [{
-    //       name : 'Intraday AAPL Price',
-    //       data: history,
-
-    //       type : 'spline',
-    //       fillColor : {
-    //         linearGradient : {
-    //           x1: 0, 
-    //           y1: 0, 
-    //           x2: 0, 
-    //           y2: 1
-    //         },
-    //         stops : [
-    //           [0, Highcharts.getOptions().colors[0]], 
-    //           [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-    //         ]
-    //       },
-    //       threshold: null
-
-    //     }],
-
-    //     title : {
-    //       text : 'Intraday Stock Price (AAPL)'
-    //     }
-    //   });
-    // }); 
-      var chart;
-        $('#stockchart').highcharts({
-            chart: {
-                type: 'spline',
-
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                               load : function() {
-
-              // set up the updating of the chart each second
-              var series = this.series[0];
-
-              function getCurrentPrice() {
-                $.ajax({
-                    url: 'http://finance.google.com/finance/info?client=ig&q='+ ticker, 
-                    success: function(data) { 
-                      // FOR TESTING: view all the raw data returned by google API
-                      // console.log(JSON.stringify(data)); 
-
-                      // get the time from the JSON response
-                      var dateString = data[0].lt_dts; // 2014-07-25T16:00:00Z"
-                      var date = new Date(dateString);
-                      date.setHours(date.getHours()+4);
-                      var x = date.getTime(); 
-
-                      // get the stock price from the JSON response
-                      var y = Number(data[0].l_cur);
-
-                      // FOR TESTING:
-                      // instead of using official time, use current local time
-                      // x = new Date().getTime();
-                      // instead of using actual data, use random data
-                      // y = 70 + Math.floor(Math.random() * 10);
-
-                      // since adding a point pushes the other points over, only add
-                      // if we actually got a new x coordinate (time)
-                      if (x !== lastTime) {
-                        series.addPoint([x, y], true, true);
-                      }
-                    },
-                    error: function() { alert('error'); },
-                    dataType: 'jsonp'
-                });            
-              }
-
-              setInterval(getCurrentPrice, 1000);
-            }
-          }
-        },
-            title: {
-                text: ticker+ ' Intraday'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Value'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function() {
-                        return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                turboThreshold: 2000,
-                name: 'Intraday Stock Price for' + ticker,
-                data: (function() {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-    
-                    for (i = -10; i <= 0; i++) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 50
+                    function getCurrentPrice() {
+                        $.ajax({
+                            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22AAPL%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',                       
+                          
+                            dataType: "json",
+                            success: function (data) {
+                                // get the time from the JSON response
+                                var dateString = data.query.created; // 2014-07-25T16:00:00Z"
+                                var date = new Date(dateString);
+                                date.setHours(date.getHours() + 4);
+                                var x = date.getTime();
+                                // get the stock price from the JSON response
+                                var y = data.query.results.quote.AskRealtime;
+                                series.addPoint([x, parseFloat(y)], true, true);
+                            },
+                            error: function () {
+                                alert('error');
+                            }
                         });
                     }
-                    return data;
-                })()
+
+
+
+                    // set up the updating of the chart each second
+                    series = this.series[0];
+                    setInterval(getCurrentPrice, 1000);
+                }
+            }
+        },
+
+        rangeSelector: {
+            buttons: [{
+                count: 1,
+                type: 'minute',
+                text: '1M'
+            }, {
+                count: 5,
+                type: 'minute',
+                text: '5M'
+            }, {
+                type: 'all',
+                text: 'All'
+            }],
+            inputEnabled: false,
+            selected: 0
+        },
+
+        title: {
+            text: 'Google Live Data'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
             }]
-        });
+        },
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Google Data',
+            data: [
+                [1, 1],
+                [2, 2],
+                [3, 1],
+                [4, 2]
+            ]
+        }]
     });
+
 
 };
 
@@ -230,6 +105,7 @@
 
 function historical(ticker){
   Highcharts.setOptions({
+
     global : {
       useUTC : false
 
@@ -239,119 +115,63 @@ function historical(ticker){
   var lastTime = null;
 
   // google finance API for retrieving past week of closing prices
-  $.get("http://finance.google.com/finance/historical",
-    {
-          q: ticker,
-          startdate:'Jul 1 2014',
-          output:'csv'
-    },
-    function(csvData){
-      // parse the CSV into an array
-      var parsedData = CSV.parse(csvData);
-      // console.log(JSON.stringify(parsedData));
-
-      // transform the array into coordinates to chart
-      var history = [ ];
-      parsedData.shift(); // remove the title row
-      for (var i=0; i<20; i++) {
-        var row = parsedData[i];
-        var date = new Date(row[0]);
-        date.setHours(16);
-        var price = row[4];
-        history.unshift([ date.getTime(), price ]);
-      }
+  $.ajax({
+      url: "historical/GOOG.json",
+      success: function (csvData) {
 
       // start with lastTime being the latest x coordinate
-      lastTime = history[history.length-1][0];
+          var chart;
+            $('#stockchart').highcharts({
+                chart: {
+                    type: 'spline',
+                    animation: Highcharts.svg, // don't animate in old IE
+                    marginRight: 10,
+                    events: {
+                      load : function() {
 
-      var chart;
-        $('#stockchart').highcharts({
-            chart: {
-                type: 'spline',
-                turboThreshold: 2000,
-                animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                               load : function() {
-
-              // set up the updating of the chart each second
-              var series = this.series[0];
-              function getCurrentPrice() {
-                $.ajax({
-                    url: 'http://finance.google.com/finance/info?client=ig&q='+ticker,
-                    success: function(data) {
-                      // FOR TESTING: view all the raw data returned by google API
-                      // console.log(JSON.stringify(data)); 
-
-                      // get the time from the JSON response
-                      var dateString = data[0].lt_dts; // 2014-07-25T16:00:00Z"
-                      var date = new Date(dateString);
-                      date.setHours(date.getHours()+4);
-                      var x = date.getTime();
-
-                      // get the stock price from the JSON response
-                      var y = Number(data[0].l_cur);
-
-                      // FOR TESTING:
-                      // instead of using official time, use current local time
-                      // x = new Date().getTime();
-                      // instead of using actual data, use random data
-                      // y = 70 + Math.floor(Math.random() * 10);
-
-                      // since adding a point pushes the other points over, only add
-                      // if we actually got a new x coordinate (time)
-                      if (x !== lastTime) {
-                        series.addPoint([x, y], false, false);
-                        // lastTime = s;
+                        // set up the updating of the chart each second
                       }
-                    },
-                    error: function() { alert('error'); },
-                    dataType: 'jsonp'
-                });  
-              }
-
-              setInterval(getCurrentPrice, 1000);
-            }
-          }
-        },
-            title: {
-                text: ticker+' Historical Stock Price'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Value'
+                    }
                 },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                formatter: function() {
-                        return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: 'History Stock Price ( '+ticker+' )',
-                data: history
-            }],
+                title: {
+                    text: ticker+' Historical Stock Price'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150
+                },
+                yAxis: {
+                    title: {
+                        text: 'Value'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function() {
+                            return '<b>'+ this.series.name +'</b><br/>'+
+                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+                            Highcharts.numberFormat(this.y, 2);
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'History Stock Price GOOG',
+                    data: csvData
+                }],
 
-        });
+            });
+        }
     });
-}
+};
 
 function fillChart(){ 
   var tick = $('.user-heading h2').html();
@@ -362,12 +182,25 @@ function fillChart(){
   if(time > 9.3 && time < 16 && day != 6 && day != 7 ){
     var tick = $('.user-heading h2').html();
     realTime(tick)
-    $('text').last().html("");
+    setTimeout(function() { $('text').last().html(""); }, 400);
   }else{
     historical(tick);
+    setTimeout(function() { $('text').last().html(""); }, 400);
+    $('.stat-btn').not(this).toggleClass('active');
   };
-  setTimeout(function() { $('text').last().html(""); }, 400);
+  
 };
 $(document).on('page:change', function() {
   fillChart();
+
+  $('.stat-btn').click(function() {
+    $('.stat-btn').not(this).removeClass('active');
+    $(this).addClass('active');
+    var tick = $('.user-heading h2').html();
+    if($(this).find( "i" ).attr("class").split(' ')[1] === 'fa-clock-o'){
+      historical(tick);
+    }else{
+      realTime(tick)
+    }
+  });
 });
