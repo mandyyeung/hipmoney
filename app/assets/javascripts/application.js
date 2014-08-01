@@ -28,6 +28,8 @@
 //= require jquery.flot.pie.resize
 //= require jquery.flot.animator.min
 
+//=require jquery.countdown
+
 
 //= require jquery.customSelect.min
 //= require csv

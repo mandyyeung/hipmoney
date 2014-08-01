@@ -1,9 +1,10 @@
 require 'csv'
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.where('UPPER(name) LIKE UPPER(?) OR UPPER(ticker) LIKE UPPER(?)', "%#{params[:query]}%", "%#{params[:query]}%")
+    @stocks = Stock.where('UPPER(name) LIKE UPPER(?) OR UPPER(ticker) LIKE UPPER(?)', "#{params[:query]}%", "#{params[:query]}%")
+    @user_stocks = current_user.stocks
     respond_to do |format|
-      format.json { render json: @stocks }
+      format.json { render json: { stock: @stocks[0..9], stocks: @user_stocks } }
     end
   end
 

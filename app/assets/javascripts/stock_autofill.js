@@ -57,15 +57,16 @@ $(document).on('page:change', function () {
          $('.user-heading p').html(stock.name);
          $('.stock-logo img').attr("src", logo);
          fillChart();
-      });
+      }).success(function() {
       $.ajax({
-        url: 'http://finance.google.com/finance/info?client=ig&q='+ ticker,
-        dataType: 'jsonp',
+        url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22' + ticker + '%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',                       
+        dataType: "json",
         success: function(data) { 
-          var currentPrice = "$" + Number(data[0].l_cur);
-          $('li[data-ticker="' + data[0].t + '"] span.badge.label-success').html(currentPrice);
+          var currentPrice = "$" + data.query.results.quote.AskRealtime;
+          $('li[data-ticker="' + data.query.results.quote.Symbol + '"] span.badge.label-success').html(currentPrice);
         }
       });
+    });
     };
   });
 
@@ -103,24 +104,26 @@ $(document).on('page:change', function () {
     if(!input)
       return; 
 
-    $.getJSON(JSONPath, function( response ){
-      response.forEach(function( obj ){ 
+    $.getJSON(JSONPath, function(response){
+      // debugger
+      response.stock.forEach(function(obj){ 
         if(obj.logo === null){
           var logo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08tgzF1SmLGFuIperm7c1h9ZasKCkZ5Mmeljhitb8uzpfiymnug';
-        }else{
+        }
+        else{
           var logo = obj.logo;
         };
         var id = obj.id;
-        if($('.nav-stacked').html().indexOf(id) < 0){
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
-        } else {
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
-        }
+        var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
+        response.stocks.forEach(function(user_stock){
+          if(user_stock.id === id) {
+            template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
+          }
+        });
         $list.append(template);
       });
     });
   });
-
 
 
 });
