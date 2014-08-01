@@ -1,6 +1,4 @@
-
-<<<<<<< HEAD
-=======
+var realTimeInterval = null;
 function realTime(ticker){
     Highcharts.setOptions({
         global: {
@@ -231,4 +229,4 @@ $(document).on('page:change', function() {
     }
   });
 });
->>>>>>> 5ce2f505a3be2cfac19ab2ea5304b88d09e64494
+
