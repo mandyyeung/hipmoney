@@ -23,7 +23,7 @@ function realTime(ticker){
                                 // get the time from the JSON response
                                 var dateString = data.query.created; // 2014-07-25T16:00:00Z"
                                 var date = new Date(dateString);
-                                date.setHours(date.getHours() + 4);
+                                date.setHours(date.getHours());
                                 var x = date.getTime();
                                 // get the stock price from the JSON response
                                 var y = data.query.results.quote.AskRealtime;
