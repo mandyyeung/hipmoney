@@ -1,5 +1,4 @@
 var realTimeInterval = null;
-
 function realTime(ticker){
     Highcharts.setOptions({
         global: {
@@ -24,7 +23,7 @@ function realTime(ticker){
                                 // get the time from the JSON response
                                 var dateString = data.query.created; // 2014-07-25T16:00:00Z"
                                 var date = new Date(dateString);
-                                date.setHours(date.getHours() + 4);
+                                date.setHours(date.getHours());
                                 var x = date.getTime();
                                 // get the stock price from the JSON response
                                 var y = data.query.results.quote.AskRealtime;
@@ -61,7 +60,7 @@ function realTime(ticker){
         },
 
         title: {
-            text: ticker + 'Real Time Stock Data'
+            text: ticker + ' Real Time Stock Data'
         },
         xAxis: {
             type: 'datetime',
@@ -230,3 +229,4 @@ $(document).on('page:change', function() {
     }
   });
 });
+

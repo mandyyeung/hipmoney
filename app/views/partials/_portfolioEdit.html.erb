@@ -3,7 +3,7 @@
         <section class="panel">
             <div class="panel-heading">
               <span class="title">MY PORTFOLIO</span>
-              <div class="pull-right"><%= link_to '<i class="fa fa-edit"></i>'.html_safe, '#' %></div>
+              <div class="pull-right"><%= link_to '<i class="fa fa-edit"></i>'.html_safe, '#', :class => "portfolio-show" %></div>
             </div>
                 <section class="panel">
                     <div class="panel-body">
@@ -18,14 +18,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% current_user.portfolio_show.each do |stock| %>
-                                  <tr>
-                                      <td><%= Stock.find(stock.stock_id).ticker %></td>
-                                      <td><%= stock.purchase_date %></td>
-                                      <td class="numeric"><%= stock.purchase_price %></td>
-                                      <td class="numeric"><%= stock.shares %></td>
+                                 <form role="form">
+                                  <% current_user.portfolio_show.each do |stock| %>
+                                    <tr>
+                                        <td><%= Stock.find(stock.stock_id).ticker %></td>
+                                        <td><input type="date" class="form-control" value="<%= stock.purchase_date %>"></td>
+                                        <td class="numeric"><input type="text" class="form-control" value="<%= stock.purchase_price %>"></td>
+                                        <td class="numeric"><input type="text" class="form-control" value="<%= stock.shares %>"></td>
+                                    </tr>
+                                  <% end %>
+                                  <tr class="edit-button-tr">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="edit-button-td"><button type="submit" class="btn btn-info">Submit</button></td>
                                   </tr>
-                                <% end %>
+                                </form>
                               </tbody>
                             </table>
                         </section>

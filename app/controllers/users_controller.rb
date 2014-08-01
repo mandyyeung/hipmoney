@@ -8,4 +8,8 @@ class UsersController < ApplicationController
       render :partial => 'partials/portfolioEdit'
     end
 
+    def show_portfolio
+      render :partial => 'partials/portfolio'
+    end
+
 end

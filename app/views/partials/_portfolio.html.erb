@@ -3,7 +3,9 @@
         <section class="panel">
             <div class="panel-heading">
               <span class="title">MY PORTFOLIO</span>
-              <div class="pull-right"><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_portfolio_path %></div>
+              <div class="pull-right">
+                <a href="#" class="btn stat-btn" data-toggle="tab" id="portfolio-edit"><i class="fa fa-edit"></i></a>
+              </div>
             </div>
                 <section class="panel">
                     <div class="panel-body">
@@ -21,14 +23,22 @@
                                 <tbody>
                                 <% current_user.portfolio_show.each do |stock| %>
                                   <tr>
-                                      <td><%= Stock.find(stock.stock_id).ticker %></td>
+                                      <td><%= t = Stock.find(stock.stock_id).ticker %></td>
                                       <td><%= stock.purchase_date %></td>
-                                      <td class="numeric"><%= stock.purchase_price %></td>
+                                      <td class="numeric">$<%= stock.purchase_price %></td>
                                       <td class="numeric"><%= stock.shares %></td>
-                                      <td class="numeric">+$7,000</td>
+                                      <td class="numeric"></td>
                                   </tr>
                                 <% end %>
+                                  <tr class="sum">
+                                    <td><b>TOTAL</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="sum"></td>
+                                  </tr>
                               </tbody>
+
                             </table>
                         </section>
                 </div>

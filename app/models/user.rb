@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
         message[:user] = full_message["user"]["username"]
         msgs << message
       end
-      msgs.sort_by{|hsh| hsh[:time]}.reverse!
+      msgs.uniq.sort_by{|hsh| hsh[:time]}.reverse!
     end
 
     def get_price
@@ -102,6 +102,5 @@ class User < ActiveRecord::Base
     def portfolio_show
       @stocks = UserStock.where(user_id: self.id).reverse
     end
-
 
 end

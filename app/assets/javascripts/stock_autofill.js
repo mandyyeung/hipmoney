@@ -104,24 +104,26 @@ $(document).on('page:change', function () {
     if(!input)
       return; 
 
-    $.getJSON(JSONPath, function( response ){
-      response.forEach(function( obj ){ 
+    $.getJSON(JSONPath, function(response){
+      // debugger
+      response.stock.forEach(function(obj){ 
         if(obj.logo === null){
           var logo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08tgzF1SmLGFuIperm7c1h9ZasKCkZ5Mmeljhitb8uzpfiymnug';
-        }else{
+        }
+        else{
           var logo = obj.logo;
         };
         var id = obj.id;
-        if($('.nav-stacked').html().indexOf(id) < 0){
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
-        } else {
-          var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
-        }
+        var template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle"></span></div>';
+        response.stocks.forEach(function(user_stock){
+          if(user_stock.id === id) {
+            template = '<div class="result" data-url="' + logo + '" data-name="' + obj.name + '" data-ticker="' + obj.ticker + '" data-id="'+ obj.id +'">' + obj.name + ' (' + obj.ticker + ')<span class="pull-right fa fa-check-circle green"></span></div>';
+          }
+        });
         $list.append(template);
       });
     });
   });
-
 
 
 });
