@@ -2,6 +2,10 @@
   padding: 7% 5%;
 }
 
+.circle{
+  background-color: red;
+  border-radius: 5px;
+}
 .stat-btn{
   background-color: white;
   padding:4px 10px;
@@ -16,12 +20,16 @@
 }
 
 header .top-nav {
-margin-top: 12px;
+margin-top: 0px;
 margin-right: 12px;
 }
 
 .red {
   color: red;
+}
+
+.notify-row{
+  margin-top: 18px;
 }
 
 .profile-nav ul>li {
@@ -46,15 +54,19 @@ margin-right: 12px;
   color: grey;
 }
 
-.countdown div{
-  font-size: 24px;
+.countdown p{
+  font-size: 18px;
   display: inline;
+  margin-left: 10px;
+  position: absolute;
+  top: 30px;
 }
 .countdown{
   float: left;
 }
-.countdown span{
+.countdown div{
   font-size: 12px;
+  margin-left: 10px
 }
 
 #status{
@@ -118,7 +130,7 @@ margin-right: 12px;
 }
 
 header h2{
-  color: grey;
+  color: #f3c022;
   margin-left: 12px;
 }
 
@@ -144,7 +156,7 @@ line-height: 30px;
   -webkit-transform:rotate(45deg); /* Opera, Chrome, and Safari */
 }
 
-input, textarea, select, button {
+#input {
 outline: none !important;
 border: none;
 height: 20px;
@@ -155,6 +167,10 @@ background-color: rgba(0,0,0,0);
 border-bottom: 1px solid grey;
 padding-bottom: 15px;
 color: white;
+}
+
+.top-nav ul.top-menu>li{
+  margin-top: 12px;
 }
 
 

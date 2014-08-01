@@ -14,15 +14,15 @@ $(document).on('page:change', function () {
     if ( $('.stock.title').css('display')==='inline-block'){
       $('.stock.title').slideToggle( "slow", function() {
       // Animation complete.
-        $('input').animate({
+        $('#input').animate({
         width: "toggle"
         }, 500, function() {
         // Animation complete.
-          $('input').select();
+          $('#input').select();
         });
       });
     }else{
-      $('input').animate({
+      $('#input').animate({
         width: "toggle"
         }, 500, function() {
         // Animation complete.

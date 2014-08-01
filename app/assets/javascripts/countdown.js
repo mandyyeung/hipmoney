@@ -86,25 +86,56 @@ $(document).on('page:change', function() {
 
     // data = { years, days, hours, min, sec }
     render: function(data) {
-      var text = '<div>' + data.sec + '</div><span>seconds</span>';
+      var text = " <input type='text' value='"+ data.sec +"' class='dial' id='dial' data-unit='s' data-width='50' data-height='50' data-max='60'>"
       if (marketTime.marketIsOpen) {
-        text += '<div id="status">closes</div>';
+        text += '<p>Until the market closes</p>';
       }
       else {
-        text += '<div id="status">opens</div>';
+        text += '<p>Until the market opens</p>';
       }
 
       if (data.min > 0) {
-        text = '<div>' + data.min + '</div><span>minutes</span>' + text;
+        text = " <input type='text' value='"+ data.min +"' class='dial' id='dial' data-width='50' data-unit='m' data-height='50' data-max='60'>" + text;
       }
       if (data.hours > 0) {
-        text = '<div>' + data.hours + '</div><span>hours</span><div>' + text;
+        text =  "  <input type='text' value='"+ data.hours +"' class='dial' id='dial' data-width='50' data-unit='h' data-height='50' data-max='60'>" + text;
       }
       if (data.days > 0) {
-        text = '<div>'+ data.days + '</div><span>days</span><div>' + text;
+        text =  "  <input type='text' value='"+ data.days +"' class='dial' id='dial' data-width='50' data-unit='d' data-height='50' data-max='60'>" + text;
       }
       $(this.el).html(text);
+
+
+      var dial = $(".dial");
+dial.knob({
+  readOnly: true
+ ,fgColor: "#f3c022"
+ ,bgColor: "#f3f3f3"
+ ,inputColor: "#f3c022"
+ ,thickness: 0.1
+ ,draw: function () {
+    $(this.i).val(this.cv + this.i.attr('data-unit'))
     },
+});
+
+$('#anim').on( 'click',function(){
+  var to = dial.val();
+  for( v=0; v<=to; v++ ){
+    dial.val( v ).trigger( 'change' );
+    console.log( v );
+
+  }
+});
+
+
+
+
+
+
+    },
+
   });
+
+
 
 });
