@@ -57,15 +57,16 @@ $(document).on('page:change', function () {
          $('.user-heading p').html(stock.name);
          $('.stock-logo img').attr("src", logo);
          fillChart();
-      });
+      }).success(function() {
       $.ajax({
-        url: 'http://finance.google.com/finance/info?client=ig&q='+ ticker,
-        dataType: 'jsonp',
+        url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22' + ticker + '%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',                       
+        dataType: "json",
         success: function(data) { 
-          var currentPrice = "$" + Number(data[0].l_cur);
-          $('li[data-ticker="' + data[0].t + '"] span.badge.label-success').html(currentPrice);
+          var currentPrice = "$" + data.query.results.quote.AskRealtime;
+          $('li[data-ticker="' + data.query.results.quote.Symbol + '"] span.badge.label-success').html(currentPrice);
         }
       });
+    });
     };
   });
 
