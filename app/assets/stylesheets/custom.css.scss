@@ -1,12 +1,21 @@
 #dashboard {
   padding: 7% 5%;
 }
-
+.right-side-accordion{
+  margin:0;
+}
+.right-side-accordion .head{
+  height:80px;
+  margin:0;
+}
 .wrapper{
-  margin-left: 0px;
+  padding-left: 80px;
+  padding-top: 100px;
   padding-right: 80px;
 }
-
+.user-heading.alt{
+  border-radius:0;
+}
 .form-signin a, .form-signin a:hover{
   color: #f3c022;
 }
@@ -15,6 +24,11 @@
 }
 .form-signin h2.form-signin-heading{
   background-color: white;
+}
+
+nav notify-row{
+  margin:0;
+  padding:0;
 }
 .circle{
   background-color: red;
@@ -34,7 +48,7 @@
 }
 
 header .top-nav {
-margin-top: 0px;
+margin-top: 15px;
 margin-right: 12px;
 }
 
