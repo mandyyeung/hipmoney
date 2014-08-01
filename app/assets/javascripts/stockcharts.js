@@ -1,5 +1,6 @@
-function realTime(ticker){
+var realTimeInterval = null;
 
+function realTime(ticker){
     Highcharts.setOptions({
         global: {
             useUTC: false
@@ -13,15 +14,11 @@ function realTime(ticker){
             animation: Highcharts.svg,
             events: {
                 load: function () {
-
-
-
                     var series = this.series[0];
 
                     function getCurrentPrice() {
                         $.ajax({
-                            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22AAPL%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',                       
-                          
+                            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22AAPL%22&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=',
                             dataType: "json",
                             success: function (data) {
                                 // get the time from the JSON response
@@ -39,11 +36,9 @@ function realTime(ticker){
                         });
                     }
 
-
-
                     // set up the updating of the chart each second
                     series = this.series[0];
-                    setInterval(getCurrentPrice, 1000);
+                    realTimeInterval = setInterval(getCurrentPrice, 1000);
                 }
             }
         },
@@ -66,7 +61,7 @@ function realTime(ticker){
         },
 
         title: {
-            text: 'Google Live Data'
+            text: 'Real Time Stock Data'
         },
         xAxis: {
             type: 'datetime',
@@ -96,12 +91,7 @@ function realTime(ticker){
             ]
         }]
     });
-
-
 };
-
-
-
 
 function historical(ticker){
   Highcharts.setOptions({
@@ -124,6 +114,7 @@ function historical(ticker){
             $('#stockchart').highcharts({
                 chart: {
                     type: 'spline',
+                    turboThreshold: 0,
                     animation: Highcharts.svg, // don't animate in old IE
                     marginRight: 10,
                     events: {
@@ -164,7 +155,7 @@ function historical(ticker){
                     enabled: false
                 },
                 series: [{
-                    name: 'History Stock Price GOOG',
+                    name: 'Historical Stock Price For GOOG',
                     data: csvData
                 }],
 
@@ -177,8 +168,8 @@ function fillChart(){
   var tick = $('.user-heading h2').html();
   var date = new Date();
   var stringTime = date.getHours().toString() + '.' + date.getMinutes().toString();
-  var time = parseFloat(stringTime)
-  var day = date.getDay()
+  var time = parseFloat(stringTime);
+  var day = date.getDay();
   if(time > 9.3 && time < 16 && day != 6 && day != 7 ){
     var tick = $('.user-heading h2').html();
     realTime(tick)
@@ -190,6 +181,7 @@ function fillChart(){
   };
   
 };
+
 $(document).on('page:change', function() {
   fillChart();
 
@@ -197,10 +189,17 @@ $(document).on('page:change', function() {
     $('.stat-btn').not(this).removeClass('active');
     $(this).addClass('active');
     var tick = $('.user-heading h2').html();
+
+    // if there is an active interval to get prices, clear it as we are changing the chart
+    if (realTimeInterval !== null) {
+        clearInterval(realTimeInterval);
+        realTimeInterval = null;
+    }
+
     if($(this).find( "i" ).attr("class").split(' ')[1] === 'fa-clock-o'){
       historical(tick);
     }else{
-      realTime(tick)
+      realTime(tick);
     }
   });
 });
