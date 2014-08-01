@@ -21,7 +21,7 @@ function setMarketOpenTime(date)
 
 function setMarketCloseTime(date)
 {
-  date.setHours(20);
+  date.setHours(16);
   date.setMinutes(0);
   date.setSeconds(0);
   date.setMilliseconds(0);
