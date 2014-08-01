@@ -27,7 +27,7 @@
                                       <td><%= stock.purchase_date %></td>
                                       <td class="numeric">$<%= stock.purchase_price %></td>
                                       <td class="numeric"><%= stock.shares %></td>
-                                      <td class="numeric"><%= number_to_currency(stock.shares * ((YahooFinance.quotes([t], [:ask])[0].ask.to_f) - stock.purchase_price)) %></td>
+                                      <td class="numeric"></td>
                                   </tr>
                                 <% end %>
                                   <tr class="sum">
