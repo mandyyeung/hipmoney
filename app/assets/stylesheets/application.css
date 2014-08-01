@@ -11,7 +11,7 @@
  * file per style scope.
 
  *= require theme/bootstrap.min.css
- *= require theme/table-responsive.css
+ *= require theme/table-responsive.css 
  *= require theme/style.css
  *= require theme/style-responsive.css
  *= require theme/jquery.steps.css
