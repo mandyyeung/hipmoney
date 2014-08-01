@@ -86,24 +86,24 @@ $(document).on('page:change', function() {
 
     // data = { years, days, hours, min, sec }
     render: function(data) {
-      var text = data.sec + ' seconds until the market ';
+      var text = '<div>' + data.sec + '</div><span>seconds</span>';
       if (marketTime.marketIsOpen) {
-        text += 'closes';
+        text += '<div id="status">closes</div>';
       }
       else {
-        text += 'opens';
+        text += '<div id="status">opens</div>';
       }
 
       if (data.min > 0) {
-        text = data.min + ' minutes, ' + text;
+        text = '<div>' + data.min + '</div><span>minutes</span>' + text;
       }
       if (data.hours > 0) {
-        text = data.hours + ' hours, ' + text;
+        text = '<div>' + data.hours + '</div><span>hours</span><div>' + text;
       }
       if (data.days > 0) {
-        text = data.days + ' days, ' + text;
+        text = '<div>'+ data.days + '</div><span>days</span><div>' + text;
       }
-      $(this.el).text(text);
+      $(this.el).html(text);
     },
   });
 
