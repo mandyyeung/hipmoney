@@ -60,7 +60,7 @@ function realTime(ticker){
         },
 
         title: {
-            text: ticker + 'Real Time Stock Data'
+            text: ticker + ' Real Time Stock Data'
         },
         xAxis: {
             type: 'datetime',
