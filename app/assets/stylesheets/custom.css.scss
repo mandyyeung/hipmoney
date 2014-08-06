@@ -8,13 +8,10 @@
   height:80px;
   margin:0;
 }
-.wrapper{
-  padding-left: 80px;
-  padding-top: 100px;
-  padding-right: 80px;
-}
+
 .user-heading.alt{
   border-radius:0;
+  text-align: center;
 }
 .form-signin a, .form-signin a:hover{
   color: #f3c022;
@@ -36,10 +33,17 @@ nav notify-row{
 }
 .stat-btn{
   background-color: white;
-  padding:4px 10px;
+  padding:5px 10px;
+  color: #f3c022;
+  height: 30px;
+}
+.stat-btn:hover{
+  background-color: #f3c022;
+  color: white;
 }
 .stat-btn.active{
-  background-color: #efefef;
+  background-color: #f3c022;
+  color: white;
 }
 .header .chat-toggler .profile-pic img {
   border-radius: 50%;
@@ -48,7 +52,6 @@ nav notify-row{
 }
 
 header .top-nav {
-margin-top: 15px;
 margin-right: 12px;
 }
 
@@ -57,7 +60,7 @@ margin-right: 12px;
 }
 
 .notify-row{
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 .profile-nav ul>li {
@@ -206,7 +209,7 @@ color: white;
   background-color: #3e3642;
   border-color: #3e3642;
   padding: 10px 15px;
-  padding-bottom: 0px;
+  padding-bottom:0;
   height: 50px;
 }
 
@@ -220,7 +223,8 @@ color: white;
 
 
 .wrapper{
-  margin-top: 2%;
+  margin-top: 80px;
+  padding: 40px;
 }
 
 .monthly-stats.pink {
@@ -247,12 +251,12 @@ background-color: grey!important;
 #st_scroll::-webkit-scrollbar-thumb
 {
   background: rgba(0, 0, 0, 0.5);
-
-
-
 }
-
-.profile-nav .user-heading a img {
+.dropdown{
+  margin-top: 0;
+}
+.user-heading.alt a{
+  margin:0;
 }
 
 .signup{
