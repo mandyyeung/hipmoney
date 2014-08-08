@@ -30,7 +30,7 @@ function realTime(ticker){
                                 series.addPoint([x, parseFloat(y)], true, true);
                             },
                             error: function () {
-                                alert('error');
+                                console.log('could not get data');
                             }
                         });
                     }
@@ -87,9 +87,7 @@ function realTime(ticker){
             name: ticker + ' Data',
             data: [
                 [1, 1],
-                [2, 2],
-                [3, 1],
-                [4, 2]
+                [2,1]
             ]
         }]
     });
@@ -229,4 +227,3 @@ $(document).on('page:change', function() {
     }
   });
 });
-
