@@ -26,8 +26,10 @@ function realTime(ticker){
                                 date.setHours(date.getHours());
                                 var x = date.getTime();
                                 // get the stock price from the JSON response
-                                var y = data.query.results.quote.AskRealtime;
-                                series.addPoint([x, parseFloat(y)], true, true);
+                                // var y = data.query.results.quote.AskRealtime;
+                                // series.addPoint([x, parseFloat(y)], true, true);
+                                var y = Math.floor((Math.random()* 6)) + 10;
+                            series.addPoint([x, y], true, true);
                             },
                             error: function () {
                                 console.log('could not get data');
@@ -84,12 +86,22 @@ function realTime(ticker){
         },
 
         series: [{
-            name: ticker + ' Data',
-            data: [
-                [1, 1],
-                [2,1]
-            ]
-        }]
+                name: 'Random data',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()*10
+                        });
+                    }
+                    return data;
+                }())
+            }]
     });
 };
 function historical(ticker){
