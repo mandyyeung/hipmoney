@@ -102,7 +102,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
     #no-more-tables td:before { content: attr(data-title); }
 }
 /*
-    Common 
+    Common
 */
 
 
@@ -2947,10 +2947,6 @@ ul {
 .well {
     box-shadow: none;
 }
-.right-side-accordion .terques-bg,.slimScrollBar,.brand,.sidebar-toggle-box,ul.top-menu>li>a:hover,ul.top-menu>li>a:focus,.toggle-right-box:hover  {
-    background:#3e3642 !important;
-}
-
 
 ul.sidebar-menu li ul.sub li a:hover,ul.sidebar-menu li ul.sub li.active a ,ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus,ul.sidebar-menu li a.active i,ul.sidebar-menu li a:hover i,ul.sidebar-menu li a:focus i{
     color: #eb9d12;
@@ -4614,7 +4610,7 @@ a,a:hover,a:focus {
     color:#b6b6b6;
     font-weight:300;
     font-family:'Open Sans',sans-serif;
-    
+
 }
 .form-signin .checkbox .box{
     margin-left: 7px;
@@ -4723,27 +4719,7 @@ a,a:hover,a:focus {
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
 }
-.right-side-accordion .dcjq-icon {
-    height:17px;
-    width:17px;
-    display:inline-block;
-    background:url(../images/acc-expand.png) no-repeat top;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    -webkit-border-radius:3px;
-    position:absolute;
-    right:10px;
-}
-.right-side-accordion .active .dcjq-icon {
-    background:url(../images/acc-expand.png) no-repeat bottom;
-    border-radius:3px;
-    -moz-border-radius:3px;
-    -webkit-border-radius: 3px;
-}
 
-.right-side-accordion li:nth-child(2) ul li .prog-row {
-    border: none;
-}
 /*---*/
 .nav-collapse.collapse {
     display:inline;
@@ -5315,31 +5291,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     color:#707076;
     font-size:12px;
 }
-.right-side-accordion {
-    margin-top:6px;
-}
-.right-side-accordion .head {
-    padding:20px;
-    text-transform:uppercase;
-    width:100%;
-    display:inline-block;
-}
-.right-side-accordion .red-bg {
-    background:#fa8564;
-    color:#fff;
-}
-.right-side-accordion .terques-bg {
-    background:#45c9c4;
-    color:#fff;
-}
-.right-side-accordion .purple-bg {
-    background:#a48ad4;
-    color:#fff;
-}
-.right-side-accordion .yellow-bg {
-    background:#f3c022;
-    color:#fff;
-}
+
 .prog-row {
     border-bottom:1px solid #3C3C44;
     display:inline-block;
@@ -10033,11 +9985,11 @@ div.tagsinput span.tag {
 }
 
 
-.gear-settings { 
-    width: 35px; 
-    height: 35px; 
-    -webkit-border-radius: 0 30% 0 0; 
-    -moz-border-radius: 0 30% 0 0; 
+.gear-settings {
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius: 0 30% 0 0;
+    -moz-border-radius: 0 30% 0 0;
     border-radius: 0 30% 0 0;
 }
 
@@ -10595,16 +10547,6 @@ right: -1px;
   padding: 7% 5%;
 }
 
-/* line 4, /Users/Natacha/Development/flatiron/projects/hipmoney/app/assets/stylesheets/custom.css.scss */
-.right-side-accordion {
-  margin: 0;
-}
-
-/* line 7, /Users/Natacha/Development/flatiron/projects/hipmoney/app/assets/stylesheets/custom.css.scss */
-.right-side-accordion .head {
-  height: 80px;
-  margin: 0;
-}
 
 /* line 12, /Users/Natacha/Development/flatiron/projects/hipmoney/app/assets/stylesheets/custom.css.scss */
 .user-heading.alt {
@@ -10975,4 +10917,3 @@ header h2 {
 
 
  */
-
