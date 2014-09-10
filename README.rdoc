@@ -1,2 +1,0 @@
-HipMoney is a webapp that allows you to check financial data with a nice easy to use dashboard.
-
