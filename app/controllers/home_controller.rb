@@ -1,7 +1,6 @@
+# Home Controller
 class HomeController < ApplicationController
   def show
-    if !current_user
-      render 'login'
-    end
+    render 'login' unless current_user
   end
 end

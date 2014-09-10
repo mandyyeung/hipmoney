@@ -1,7 +1,9 @@
 require 'csv'
+# Stocks Controller
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.where('UPPER(name) LIKE UPPER(?) OR UPPER(ticker) LIKE UPPER(?)', "#{params[:query]}%", "#{params[:query]}%")
+    @stocks = Stock.where('UPPER(name) LIKE UPPER(?) OR UPPER(ticker) LIKE UPPER(?)',
+                          "#{params[:query]}%", "#{params[:query]}%")
     @user_stocks = current_user.stocks
     respond_to do |format|
       format.json { render json: { stock: @stocks[0..9], stocks: @user_stocks } }
@@ -16,7 +18,7 @@ class StocksController < ApplicationController
   end
 
   def bitcoin
-    @bitcoin = JSON.load(open("https://www.bitstamp.net/api/ticker/"))
+    @bitcoin = JSON.load(open('https://www.bitstamp.net/api/ticker/'))
     respond_to do |format|
       format.json { render json: @bitcoin }
     end
@@ -45,16 +47,16 @@ class StocksController < ApplicationController
   end
 
   def destroy
-  	@stock = Stock.find(params[:id])
-  	current_user.stocks.delete(@stock)
-  	respond_to do |format|
-  		format.js
-  	end
+    @stock = Stock.find(params[:id])
+    current_user.stocks.delete(@stock)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
 
   def stock_params
-     params.require(:stock).permit(:query, :id)
+    params.require(:stock).permit(:query, :id)
   end
 end
