@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
 
+  validates :name, presence: true
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
@@ -58,5 +60,9 @@ class User < ActiveRecord::Base
 
   def portfolio_show
     @stocks = UserStock.where(user_id: self.id).reverse
+  end
+
+  def self.by_letter(letter)
+    where('name LIKE ?', "#{letter}%").order(:name)
   end
 end
