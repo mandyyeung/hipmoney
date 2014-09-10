@@ -8,7 +8,7 @@ A single page dashboard to engage young people on the stock market and personal 
 
 ## Usage
 
-[www.hipmoney.herokuapp.com](http://www.hipmoney.herokuapp.com)
+[http://hipmoney.herokuapp.com](http://hipmoney.herokuapp.com)
 
 ## Development/Contribution
 
