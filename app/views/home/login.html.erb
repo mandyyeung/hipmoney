@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div class="container">
+ <div class="container">
+  <div class="row">
+    <form class="form-signin" style='z-index:50; position: relative;'>
+      <h2 class="form-signin-heading" style="color:#000; background-color:rgba(255, 204, 68, 0.5)">
+        <i class="fa fa-money"> </i><b> HipMoney</b><br>
+        <span style="text-transform: lowercase; font-size: 10px;">Your personal finance dashboard</span></h2>
 
-      <form class="form-signin" style='z-index:50; position: relative;'>
-        <h2 class="form-signin-heading"><%= link_to '<div class="fa fa-google-plus fa-5x"></div>'.html_safe, "/auth/google_oauth2"%></div></h2>
-<!--         <div class="login-wrap">
-            <%#= link_to '<div class="fa fa-google-plus fa-5x"></div>'.html_safe, "/auth/google_oauth"%></div> -->
-
-      </form>
-
-    </div>
-<div class='video'>
+      <div class="login-wrap form-signin-heading">
+        <center>
+        <%= link_to 'Login with <i class="fa fa-google-plus"></i>'.html_safe, "/auth/google_oauth2"%>
+      </center>
+      </div>
+    </form>
+  </div>
 </div>
-<script>
-
-$(function(){
-  $.okvideo({source:'http://vimeo.com/72506853', adproof: 'true'}) // [:url] refers to a YouTube or Vimeo URL
-});
-</script>
-
+<div class="video">
 </div>
-</body>
-</html>
